@@ -1,34 +1,36 @@
 'use strict';
 
-var routerRun = function($rootScope, $state, voucherService) {
+var routerRun = function($rootScope, $state, voucherService, $stateParams, AppConstants) {
+    var userRoles = AppConstants.buildRoles(AppConstants.roles);
 
+    $('body').hide();
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState) {
-        if (!('data' in toState.views.contentview) || !('access' in toState.views.contentview.data)) {
+        
+        if (!('data' in toState) || !('access' in toState.data)) {
             $rootScope.error = 'Access undefined for this state';
             event.preventDefault();
         } else {
+            if(AppConstants.authenticated === false){
+                voucherService.getAuth().then(function(response) {
 
-            var user = voucherService.getCurrentUser();
-            if (user === null) {
-                voucherService.getAuth().then(function() {
-                    if (!voucherService.authorize(toState.views.contentview.data.access)) {
-                        $rootScope.error = 'Seems like you tried accessing a route you don\'t have access to...';
+                    var authJson = response.data, 
+                        user = {},
+                        value = authJson.hasOwnProperty('union_id') ? 'union_id' : (authJson.hasOwnProperty('uid') ? 'uid' : (authJson.hasOwnProperty('redirect') ? 'redirect' : 'redirect')),
+                        tempUser = {
+                            userObj: authJson,
+                            role: userRoles[value]
+                        };
+                    if (!voucherService.authorize(toState.data.access, tempUser.role)) {
+
+                        $state.go('notAuth', {
+                            redirect: tempUser.userObj.redirect
+                        });
                         event.preventDefault();
-
-                        if (fromState.url === '^') {
-                            $state.go('notFound');
-                        }
+                    }else{
+                        AppConstants.authenticated = true;
                     }
-                });
-            } else {
-                if (!voucherService.authorize(toState.views.contentview.data.access)) {
-                    $rootScope.error = 'Seems like you tried accessing a route you don\'t have access to...';
-                    event.preventDefault();
-
-                    if (fromState.url === '^') {
-                        $state.go('notFound');
-                    }
-                }
+                    $('body').show();
+                });                
             }
         }
     });

@@ -4,7 +4,7 @@ var gulp = require('gulp'),
     jshint = require('gulp-jshint'),
     browserify = require('browserify'),
     source = require('vinyl-source-stream'),
-    sass = require('gulp-sass'),
+    sass = require('gulp-ruby-sass'),
     autoprefixer = require('gulp-autoprefixer'),
     clean = require('gulp-clean'),
     changed = require('gulp-changed'),
@@ -68,13 +68,7 @@ gulp.task('lint', function() {
 
 // Styles task
 gulp.task('styles', function() {
-    gulp.src('sass/*.scss')
-        // The onerror handler prevents Gulp from crashing when you make a mistake in your SASS
-        .pipe(sass({
-            onError: function(e) {
-                console.log(e);
-            }
-        }))
+    sass('sass/*.scss')
         // Optionally add autoprefixer
         .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))
         // These last two should look familiar now :)

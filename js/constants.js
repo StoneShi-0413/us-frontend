@@ -5,22 +5,34 @@ var AppConstants = {
     //protocol : 'https://',
 
     /*local test */
-    applicationIp: 'localhost',
+    applicationIp: 'www.us-app.com',
+
+    applicationPrefix: 'usmvn/weixin',
 
     applicationPort: '8080',
+
+    authenticated : false,
 
     roles: [
         'redirect', //'public',
         'uid', //'usUser',
-        'union_id' //'wechatUser'
+        'union_id', //'wechatUser'
+        'result',
+        'public'
     ],
 
     accessLevels: {
-        'couponResult': ['uid', 'union_id'],
+        'couponResult': ['uid', 'union_id', 'result'],
         'acquireCoupon': ['uid', 'union_id'],
-        'notFound': '*'
+        'notAuth': ['redirect'],
+        'message': '*'
     },
 
+    getApiPrefix: function() {
+        var apiPrefix = AppConstants.protocol + AppConstants.applicationIp + '/' + AppConstants.applicationPrefix;
+
+        return apiPrefix;
+    },
 
     buildRoles: function(roles) {
 

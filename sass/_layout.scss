@@ -141,6 +141,11 @@
         .rule-title .title {
             width: 41%;
         }
+        .over {
+            p {
+                font-size: 13px;
+            }
+        }
     }
     /* Landscape */
     
@@ -154,6 +159,11 @@
         }
         .rule-title .title {
             width: 21%;
+        }
+        .over {
+            p {
+                font-size: 18px;
+            }
         }
     }
     
@@ -224,6 +234,11 @@
             font-size: 23px;
             color: #00fcfe;
         }
+        .over {
+            p {
+                font-size: 13px;
+            }
+        }
     }
     /* Landscape */
     
@@ -245,6 +260,11 @@
             display: inline-block;
             font-size: 23px;
             color: #00fcfe;
+        }
+        .over {
+            p {
+                font-size: 22px;
+            }
         }
     }
     
@@ -336,13 +356,11 @@
             padding: 0;
         }
     }
-
+    
     .table-responsive {
         min-height: .01%;
         overflow-x: auto;
     }
-
-    
     /* ----------- iPhone 6 ----------- */
     /* Portrait and Landscape */
     
@@ -366,6 +384,11 @@
             font-size: 30px;
             color: #00fcfe;
         }
+        .over {
+            p {
+                font-size: 17px
+            }
+        }
     }
     /* Landscape */
     
@@ -385,6 +408,12 @@
             display: inline-block;
             font-size: 34px;
             color: #00fcfe;
+        }
+        .over {
+            p {
+                font-size: 23px
+            }
+            margin-bottom: 3px;
         }
     }
     /* ----------- iPhone 6+ ----------- */
@@ -430,6 +459,14 @@
             font-size: 35px;
             color: #00fcfe;
         }
+
+
+        .over {
+            p {
+                font-size: 27px
+            }
+            margin-bottom: 3px;
+        }
     }
     /* ----------- iPad mini ----------- */
     /* Portrait and Landscape */
@@ -450,6 +487,12 @@
             display: inline-block;
             font-size: 45px;
             color: #00fcfe;
+        }
+        .over {
+            p {
+                font-size: 38px
+            }
+            margin-bottom: 3px;
         }
     }
     /* ----------- iPad 1 and 2 ----------- */
@@ -472,6 +515,12 @@
             font-size: 45px;
             color: #00fcfe;
         }
+        .over {
+            p {
+                font-size: 38px
+            }
+            margin-bottom: 1px;
+        }
     }
     /* ----------- iPad 3 and 4 ----------- */
     /* Portrait and Landscape */
@@ -493,6 +542,13 @@
             font-size: 49px;
             color: #00fcfe;
         }
+
+        .over {
+            p {
+                font-size: 38px
+            }
+            margin-bottom: 1px;
+        }
     }
     
     @media only screen and (min-device-width: 1024px) {
@@ -511,6 +567,14 @@
             display: inline-block;
             font-size: 49px;
             color: #00fcfe;
+        }
+
+        
+        .over {
+            p {
+                font-size: 38px
+            }
+            margin-bottom: 1px;
         }
     }
     
@@ -536,5 +600,32 @@
                     padding: 0px 2%;
                 }
             }
+        }
+    }
+    
+    img {
+        width: auto\9;
+        height: auto;
+        max-width: 100%;
+        vertical-align: middle;
+        border: 0;
+        -ms-interpolation-mode: bicubic;
+    }
+    
+    .counter {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+    
+    .over {
+        position: absolute;
+        z-index: 100;
+        width: 100%;
+        bottom: 0;
+        padding: 0;
+        p {
+            padding: 0;
+            margin: 3%;
         }
     }
