@@ -18,7 +18,7 @@
 
 4. `gulp copy:setup`
 	
-	to prepare flexible js file.
+	to prepare flexible js and loading-bar js file.
 
 5.  `gulp watch`
 	
