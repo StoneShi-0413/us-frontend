@@ -26,7 +26,10 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
 
     service.authorize = function(accessLevel, role) {
         if (role === undefined) {
-            role = {bitMask: 1, title: "redirect"};
+            role = {
+                bitMask: 1,
+                title: "redirect"
+            };
         }
         return accessLevel.bitMask & role.bitMask;
     };
@@ -39,8 +42,19 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
         return promise(url, 'GET');
     };
 
+    service.getParticipants = function(lot) {
+        alert(lot);
+        var url = AppConstants.getApiPrefix() + '/lottery/history?lot=:lot';
+
+        url = url.replace(':lot', lot);
+        alert(url);
+
+        return promise(url, 'GET');
+    };
+
     return service;
 };
 
 //var AppConstants =  require('./constants');
-servicesModule.factory(serviceName, ['$http', '$window', '$location', '$q', 'AppConstants', voucherService]);
+servicesModule.factory(serviceName, voucherService /*['$http', '$window', '$location', '$q', 'AppConstants', voucherService]*/ );
+

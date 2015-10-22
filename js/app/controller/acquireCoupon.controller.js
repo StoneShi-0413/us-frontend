@@ -2,23 +2,21 @@
 
 var controllersModule = require('./controllers');
 var controllerName = 'AcquireCouponController';
-var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService) {
+var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, AppConstants, friendQueue) {
     $scope.couponResult = function($event) {
 
+        
         $event.preventDefault()
-        var lotParam = $stateParams.lot;
+        
+        var lotParam = AppConstants.queryString().lot;
         voucherService.lottery(lotParam).success(function(response) {
             var rep = response;
             if (rep.result) {
-                console.log(rep);
-                $state.go('couponResult', {
-                    lotteryObj: JSON.stringify(rep)
-                });
+                friendQueue.myProfile = response.data;
+                $state.go('couponResult');
             }
         }).error(function(data) {
-            $state.go('message', {
-                messages: JSON.stringify(data)
-            });
+            alert(data.reason);
         });
     };
 };

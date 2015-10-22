@@ -28,10 +28,10 @@ angular.element(document).ready(function() {
     var AppConstants = require('./constants');
     // mount on win dow for testing   /dist/angular-spinners.min
     window.app = angular.module('app', requires);
-    
     angular.module('app').constant('AppConstants', AppConstants);
     angular.module('app').config(require('./routes'));
+    angular.module('app').value('friendQueue',{'queue':'','myProfile':'','lot':''});
     angular.module('app').run(require('./routesChangeRun'));
     angular.bootstrap($('body'), ['app']);
-
+    
 });

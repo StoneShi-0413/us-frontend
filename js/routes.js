@@ -7,12 +7,11 @@ var router = function($stateProvider, $urlRouterProvider) {
     //$locationProvider.html5Mode(true);
 
     $urlRouterProvider.otherwise('/acquireCoupon');
-    //$urlRouterProvider.otherwise('/couponResult');
 
     // States
     $stateProvider
         .state('acquireCoupon', {
-            url: '/acquireCoupon?lot',
+            url: '/acquireCoupon',
             data: {
                 access: accessLevels.acquireCoupon
             },
@@ -29,7 +28,7 @@ var router = function($stateProvider, $urlRouterProvider) {
         })
         .state('couponResult', {
 
-            url: '/couponResult/:lotteryObj',
+            url: '/couponResult',
             data: {
                 access: accessLevels.couponResult
             },
@@ -45,32 +44,17 @@ var router = function($stateProvider, $urlRouterProvider) {
             }
         })
         .state('notAuth', {
-            url: '/notAuth/:redirect',
+            url: '/notAuth?:redirect',
             data: {
                 access: accessLevels.notAuth
             },
             resolve: {
-                redirect: function($stateParams,$window) {
-                    if($stateParams.redirect){
+                redirect: function($stateParams, $window) {
+                    if ($stateParams.redirect) {
                         var url = decodeURIComponent($stateParams.redirect);
+
                         $window.location.href = url;
                     }
-                }
-            }
-        })
-        .state('message', {
-            url: '/message/:messages',
-            data: {
-                access: accessLevels.message
-            },
-            views: {
-                'contentview': {
-                    templateUrl: './views/templates/voucher/message.html',
-                    controller: 'MessageController'
-                },
-                'headerview': {
-                    templateUrl: './views/templates/header.html',
-                    controller: 'HeaderController'
                 }
             }
         });
