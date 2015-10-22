@@ -2,7 +2,10 @@
     <div class="us-container text1">
         <div class="counter">
             <div style="text-align:center;" class="over">
-                <p>{{code}}</p>
+                <p>{{lotteryObj.couponsName}}</p>
+            </div>
+            <div style="text-align:center;" class="over">
+                <p>{{lotteryObj.code}}</p>
             </div>
             <img class="img-responsive" ng-src="{{img_url}}"/>
         </div>
@@ -29,15 +32,15 @@
             <table class="table table-responsive ">
                 <tr  ng-repeat='friend in friendQueues'>
                     <td class="thumbnail-img-person">
-                        <img class="media-object" data-src="holder.js/64x64" alt="64x64" ng-src="http://www.us-app.com/usmvn/image/{{friend.iconid}}">
+                        <img class="media-object" data-src="holder.js/64x64" alt="64x64" ng-src="{{friend.profileImgUrl}}">
                     </td>
                     <td class="person">
                         <p class="person-name">{{friend.name}}</p>
                         <p class="person-comments">炒鸡棒，领券领到手软</p>
-                        <p class="comments-date">{{friend.lot_date}}</p>
+                        <p class="comments-date">{{friend.lot_date | date:'yyyy-MM-dd HH:mm:ss Z'}}</p>
                     </td>
                     <td class="price-unit">
-                        <p class="price-unit">20元</p>
+                        <p class="price-unit">{{friend.couponsName}}</p>
                     </td>
                 </tr>
             </table>

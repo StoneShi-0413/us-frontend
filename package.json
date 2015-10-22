@@ -1,7 +1,7 @@
 {
     "name": "us-lottery-frontend",
-    "version": "0.0.1",
-    "devDependencies": {
+    "version": "1.0.0",
+    "dependencies": {
         "browserify": "~3.46.0",
         "browser-sync": "^2.7.6",
         "connect-livereload": "~0.4.0",
@@ -21,10 +21,13 @@
         "gulp-ng-annotate": "1.1.0",
         "vinyl-buffer": "^1.0.0",
         "vinyl-source-stream": "^0.1.1",
-
         "tiny-lr": "0.0.7"
     },
-    "engines": {
-        "node": ">=0.10.0"
-    }
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "",
+  "author": "",
+  "license": "",
+  "readmeFilename": ""
 }

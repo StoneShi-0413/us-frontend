@@ -43,11 +43,9 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
     };
 
     service.getParticipants = function(lot) {
-        alert(lot);
         var url = AppConstants.getApiPrefix() + '/lottery/history?lot=:lot';
 
         url = url.replace(':lot', lot);
-        alert(url);
 
         return promise(url, 'GET');
     };

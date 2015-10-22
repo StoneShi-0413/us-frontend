@@ -2,7 +2,7 @@
 
 
 
-var routerRun = function($rootScope, $state, voucherService, $stateParams, AppConstants, friendQueue,$window) {
+var routerRun = function($rootScope, $state, voucherService, $stateParams, AppConstants, friendQueue, $window) {
     var userRoles = AppConstants.buildRoles(AppConstants.roles);
 
     $('body').hide();
@@ -12,8 +12,8 @@ var routerRun = function($rootScope, $state, voucherService, $stateParams, AppCo
             event.preventDefault();
         } else {
             var lot = AppConstants.queryString().lot;
-            if(!lot){
-                return ;
+            if (!lot) {
+                return;
             }
             if (AppConstants.authenticated === false) {
                 voucherService.getAuth().then(function(response) {
@@ -24,7 +24,6 @@ var routerRun = function($rootScope, $state, voucherService, $stateParams, AppCo
                             userObj: authJson,
                             role: userRoles[value]
                         };
-                    alert(!voucherService.authorize(toState.data.access, tempUser.role));
                     if (!voucherService.authorize(toState.data.access, tempUser.role)) {
                         $state.go('notAuth', {
                             redirect: tempUser.userObj.redirect
@@ -32,7 +31,7 @@ var routerRun = function($rootScope, $state, voucherService, $stateParams, AppCo
                         event.preventDefault();
                     } else {
                         voucherService.getParticipants(lot).then(function(rep) {
-                            alert(JSON.stringify(rep.data));
+
                             var rslt = rep.data,
                                 indexSplice = -1;
                             angular.forEach(rslt, function(item, index) {
@@ -42,7 +41,7 @@ var routerRun = function($rootScope, $state, voucherService, $stateParams, AppCo
 
                             });
                             AppConstants.authenticated = true;
-                            alert(indexSplice);
+
                             //if has lotteried
                             if (indexSplice > -1) {
                                 var myRslt = rslt[indexSplice];
