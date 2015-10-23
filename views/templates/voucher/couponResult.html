@@ -1,23 +1,23 @@
 <div class="container text-center">
     <div class="us-container text1">
         <div class="counter">
-            <div style="text-align:center;" class="over">
+            <div style="text-align:center;" class="money">
                 <p>{{lotteryObj.couponsName}}</p>
             </div>
             <div style="text-align:center;" class="over">
                 <p>{{lotteryObj.code}}</p>
             </div>
-            <img class="img-responsive" ng-src="{{img_url}}"/>
+            <img class="img-responsive" ng-src="{{img_url}}" />
         </div>
     </div>
     <div class="us-container text1">
         <img class="img-responsive" src="./img/wechat.jpg" />
     </div>
     <div class="us-container text1">
-        <button class="btn btn-sm us-btn" type="button" ng-click="couponResult()"><span class="us-btn-font-responsive">分享给小伙伴</span></button>
+        <button class="btn btn-sm us-btn" type="button" ng-click="shareFriend()"><span class="us-btn-font-responsive">分享给小伙伴</span></button>
     </div>
     <div class="us-container text1">
-        <button class="btn btn-sm us-btn" type="button" ng-click="couponResult()"><span class="us-btn-font-responsive">打开US立即购票</span></button>
+        <button class="btn btn-sm us-btn" type="button" ng-click="openApp()"><span class="us-btn-font-responsive">打开US立即购票</span></button>
     </div>
     <div class="us-container text1">
         <img class="img-responsive" src="./img/text.jpg" />
@@ -30,14 +30,18 @@
                 </span>
             </div>
             <table class="table table-responsive ">
-                <tr  ng-repeat='friend in friendQueues'>
+                <tr ng-repeat='friend in friendQueues'>
                     <td class="thumbnail-img-person">
-                        <img class="media-object" data-src="holder.js/64x64" alt="64x64" ng-src="{{friend.profileImgUrl}}">
+                        <div class="col-sm-4">
+                            <div class="thumbnail">
+                                <img src="{{friend.profileImgUrl}}" alt="..." class="">
+                            </div>
+                        </div>
                     </td>
                     <td class="person">
                         <p class="person-name">{{friend.name}}</p>
                         <p class="person-comments">炒鸡棒，领券领到手软</p>
-                        <p class="comments-date">{{friend.lot_date | date:'yyyy-MM-dd HH:mm:ss Z'}}</p>
+                        <p class="comments-date">{{friend.lot_date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
                     </td>
                     <td class="price-unit">
                         <p class="price-unit">{{friend.couponsName}}</p>

@@ -24,6 +24,32 @@ var router = function($stateProvider, $urlRouterProvider) {
                     templateUrl: './views/templates/header.html',
                     controller: 'HeaderController'
                 }
+            },
+            resolve: {
+                getFriendQueue: function(AppConstants, friendQueue, voucherService, $state) {
+                    voucherService.getParticipants(friendQueue.lot).then(function(rep) {
+
+                        var rslt = rep.data,
+                            indexSplice = -1;
+                        angular.forEach(rslt, function(item, index) {
+                            if (item.us_id === AppConstants.AppUser.userObj.us_id) {
+                                indexSplice = index;
+                            }
+
+                        });
+
+                        //if has lotteried
+                        if (indexSplice > -1) {
+                            var myRslt = rslt[indexSplice];
+                            rslt.splice(indexSplice, 1);
+                            friendQueue.queue = rslt;
+                            friendQueue.myProfile = myRslt;
+                            $state.go('couponResult');
+                        } else {
+                            friendQueue.queue = rslt;
+                        }
+                    });
+                }
             }
         })
         .state('couponResult', {

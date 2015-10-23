@@ -11,8 +11,6 @@ var AppConstants = {
 
     applicationPort: '8080',
 
-    authenticated: false,
-
     roles: [
         'redirect', //'public',
         'us_id',
@@ -23,8 +21,7 @@ var AppConstants = {
     accessLevels: {
         'couponResult': ['us_id', 'result'],
         'acquireCoupon': ['us_id'],
-        'notAuth': ['redirect'],
-        'notFound': '*'
+        'notAuth': ['redirect']
     },
 
     vouchers: [
@@ -43,8 +40,6 @@ var AppConstants = {
     },
 
     queryString: function() {
-        // This function is anonymous, is executed immediately and 
-        // the return value is assigned to QueryString!
         var query_string = {};
         var query = window.location.search.substring(1);
         var vars = query.split("&");

@@ -126,7 +126,7 @@
                             }
                         }
 
-                        if (response.config.url.indexOf('.html') < 0) {
+                        /*if (response.config.url.indexOf('.html') < 0) {
                             var txt = JSON.stringify(response.data, null, "    ");
 
                             var info = document.createElement('div');
@@ -137,7 +137,7 @@
                             info.style.wordWrap = 'break-word';
                             document.getElementById('jsonfomat').appendChild(info);
 
-                        }
+                        }*/
                         return response;
                     },
 
@@ -160,7 +160,7 @@
                             }
                         }
 
-                        if (rejection.config.url.indexOf('.html') < 0) {
+                        /*if (rejection.config.url.indexOf('.html') < 0) {
                             var txt = JSON.stringify(rejection.data, null, "    ");
 
                             var info = document.createElement('div');
@@ -171,7 +171,7 @@
                             info.style.wordWrap = 'break-word';
                             document.getElementById('jsonfomat').appendChild(info);
 
-                        }
+                        }*/
                         return $q.reject(rejection);
                     }
                 };

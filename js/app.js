@@ -13,8 +13,9 @@ require('./app/services/services');
 require('./app/directive/directives');
 require('./app/filter/filters');
 
-angular.element(document).ready(function() {
-    var requires = [
+
+var AppConstants = require('./constants'),
+    requires = [
         'ui.router',
         'ngAnimate',
         'ngTouch',
@@ -23,15 +24,50 @@ angular.element(document).ready(function() {
         'app.services',
         'app.filters',
         'app.directives'
-    ];
+    ],
+    userRoles = AppConstants.buildRoles(AppConstants.roles),
+    lot = AppConstants.queryString().lot,
+    app = angular.module('app', requires);
 
-    var AppConstants = require('./constants');
-    // mount on win dow for testing   /dist/angular-spinners.min
-    window.app = angular.module('app', requires);
-    angular.module('app').constant('AppConstants', AppConstants);
-    angular.module('app').config(require('./routes'));
-    angular.module('app').value('friendQueue',{'queue':'','myProfile':'','lot':''});
-    angular.module('app').run(require('./routesChangeRun'));
-    angular.bootstrap($('body'), ['app']);
-    
-});
+function fetchData() {
+    var initInjector = angular.injector(["ng"]);
+    var $http = initInjector.get("$http");
+    var url = AppConstants.getApiPrefix() + '/auth';
+    return $http.get(url).then(function(response) {
+        var authJson = response.data,
+            /*authJson = {
+                "uid": 393561,
+                "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU"
+            },*/
+            value = authJson.hasOwnProperty('us_id') ? 'us_id' : (authJson.hasOwnProperty('uid') ? 'uid' : (authJson.hasOwnProperty('redirect') ? 'redirect' : 'redirect')),
+            tempUser = {
+                userObj: authJson,
+                role: userRoles[value]
+            };
+        if (authJson.hasOwnProperty('redirect')) {
+            window.location.href = authJson.redirect;
+        } else if (!lot) {
+            return;
+        } else {
+            AppConstants.AppUser = tempUser;
+            bootstrapApplication();
+        }
+
+    });
+}
+
+function bootstrapApplication() {
+    angular.element(document).ready(function() {
+        app.constant('AppConstants', AppConstants);
+        app.config(require('./routes'));
+        app.value('friendQueue', {
+            'queue': '',
+            'myProfile': '',
+            'lot': lot
+        });
+        app.run(require('./routesChangeRun'));
+        angular.bootstrap($('body'), ['app']);
+    });
+}
+
+fetchData();

@@ -53,6 +53,5 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
     return service;
 };
 
-//var AppConstants =  require('./constants');
-servicesModule.factory(serviceName, voucherService /*['$http', '$window', '$location', '$q', 'AppConstants', voucherService]*/ );
+servicesModule.factory(serviceName, voucherService);
 
