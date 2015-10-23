@@ -1,35 +1,20 @@
 'use strict';
 
-var routerRun = function($rootScope, $state, voucherService) {
+var routerRun = function($rootScope, $state, voucherService, $stateParams, AppConstants) {
+    
+    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
 
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState) {
-        if (!('data' in toState.views.contentview) || !('access' in toState.views.contentview.data)) {
-            $rootScope.error = 'Access undefined for this state';
+        if (!('data' in toState) || !('access' in toState.data)) {
             event.preventDefault();
         } else {
+            var tempUser = AppConstants.AppUser;
 
-            var user = voucherService.getCurrentUser();
-            if (user === null) {
-                voucherService.getAuth().then(function() {
-                    if (!voucherService.authorize(toState.views.contentview.data.access)) {
-                        $rootScope.error = 'Seems like you tried accessing a route you don\'t have access to...';
-                        event.preventDefault();
-
-                        if (fromState.url === '^') {
-                            $state.go('notFound');
-                        }
-                    }
+            if (!voucherService.authorize(toState.data.access, tempUser.role)) {
+                $state.go('notAuth', {
+                    redirect: tempUser.userObj.redirect
                 });
-            } else {
-                if (!voucherService.authorize(toState.views.contentview.data.access)) {
-                    $rootScope.error = 'Seems like you tried accessing a route you don\'t have access to...';
-                    event.preventDefault();
-
-                    if (fromState.url === '^') {
-                        $state.go('notFound');
-                    }
-                }
-            }
+                event.preventDefault();
+            } 
         }
     });
 };

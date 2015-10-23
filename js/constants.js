@@ -5,22 +5,60 @@ var AppConstants = {
     //protocol : 'https://',
 
     /*local test */
-    applicationIp: 'localhost',
+    applicationIp: 'www.us-app.com',
+
+    applicationPrefix: 'usmvn/weixin',
 
     applicationPort: '8080',
 
     roles: [
         'redirect', //'public',
-        'uid', //'usUser',
-        'union_id' //'wechatUser'
+        'us_id',
+        'result',
+        'public'
     ],
 
     accessLevels: {
-        'couponResult': ['uid', 'union_id'],
-        'acquireCoupon': ['uid', 'union_id'],
-        'notFound': '*'
+        'couponResult': ['us_id', 'result'],
+        'acquireCoupon': ['us_id'],
+        'notAuth': ['redirect']
     },
 
+    vouchers: [
+        {'group':'[5]','name':'10元'},
+        {'group':'[6]','name':'20元'},
+        {'group':'[7]','name':'30元'},
+        {'group':'[8]','name':'75折'},
+        {'group':'[5,5,6,6,7,7,8]','name':'大礼包'}
+
+    ],
+
+    getApiPrefix: function() {
+        var apiPrefix = AppConstants.protocol + AppConstants.applicationIp + '/' + AppConstants.applicationPrefix;
+
+        return apiPrefix;
+    },
+
+    queryString: function() {
+        var query_string = {};
+        var query = window.location.search.substring(1);
+        var vars = query.split("&");
+        for (var i = 0; i < vars.length; i++) {
+            var pair = vars[i].split("=");
+            // If first entry with this name
+            if (typeof query_string[pair[0]] === "undefined") {
+                query_string[pair[0]] = decodeURIComponent(pair[1]);
+                // If second entry with this name
+            } else if (typeof query_string[pair[0]] === "string") {
+                var arr = [query_string[pair[0]], decodeURIComponent(pair[1])];
+                query_string[pair[0]] = arr;
+                // If third or later entry with this name
+            } else {
+                query_string[pair[0]].push(decodeURIComponent(pair[1]));
+            }
+        }
+        return query_string;
+    },
 
     buildRoles: function(roles) {
 
