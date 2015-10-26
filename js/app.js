@@ -33,12 +33,8 @@ function fetchData() {
     var initInjector = angular.injector(["ng"]);
     var $http = initInjector.get("$http");
     var url = AppConstants.getApiPrefix() + '/auth';
-    return $http.get(url).then(function(response) {
+    /*return $http.get(url).then(function(response) {
         var authJson = response.data,
-            /*authJson = {
-                "uid": 393561,
-                "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU"
-            },*/
             value = authJson.hasOwnProperty('us_id') ? 'us_id' : (authJson.hasOwnProperty('uid') ? 'uid' : (authJson.hasOwnProperty('redirect') ? 'redirect' : 'redirect')),
             tempUser = {
                 userObj: authJson,
@@ -54,6 +50,19 @@ function fetchData() {
         }
 
     });
+    */
+
+    var authJson = {
+            "uid": 393561,
+            "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU"
+        },
+        value = authJson.hasOwnProperty('us_id') ? 'us_id' : (authJson.hasOwnProperty('uid') ? 'uid' : (authJson.hasOwnProperty('redirect') ? 'redirect' : 'redirect')),
+        tempUser = {
+            userObj: authJson,
+            role: userRoles[value]
+        };
+    AppConstants.AppUser = tempUser;
+    bootstrapApplication();
 }
 
 function bootstrapApplication() {

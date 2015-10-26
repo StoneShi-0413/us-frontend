@@ -7,6 +7,8 @@
     "angular-ui-router": "~0.2.10",
     "angular-bootstrap" : "*",
     "angular-touch" : "*",
-    "angular-animate": "*"
+    "angular-animate": "*",
+    "moment": "2.8.3",
+    "SHA-1 ": "*"
   }
 }
