@@ -52,6 +52,8 @@ var router = function($stateProvider, $urlRouterProvider) {
                             friendQueue.queue = rslt;
                         }
                     });*/
+                    
+                    //just test
                     var indexSplice = -1,
                         //rslt = rep.data;
                         rslt = [{

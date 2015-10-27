@@ -19,9 +19,8 @@ var pickUpSamePackageName = function(arr, AppConstants) {
 };
 
 var couponResultCtrl = function($scope, $stateParams, friendQueue, voucherService, AppConstants) {
-
-
-
+  
+    //just test
     var rep = {
             "id": 469,
             "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU",
@@ -69,7 +68,7 @@ var couponResultCtrl = function($scope, $stateParams, friendQueue, voucherServic
 
     friendQueue.queue = angular.forEach(friendQueue.queue, function(item, index) {
         item.couponsName = pickUpSamePackageName(item.coupons, AppConstants);
-        item.profileImgUrl = 'http://www.us-app.com/usmvn/image/' + item.iconid;
+        item.profileImgUrl = AppConstants.protocol + AppConstants.applicationIp + '/usmvn/image/' + item.iconid;
         return item;
     });
 
@@ -84,9 +83,7 @@ var couponResultCtrl = function($scope, $stateParams, friendQueue, voucherServic
         $scope.img_url = './img/vouchered1.jpg';
     }
 
-    $scope.shareFriend = function() {
-        voucherService.shareFriend();
-    }
+    $scope.shareFriend = function() {}
 
 
 };

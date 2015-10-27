@@ -17,6 +17,9 @@ var routerRun = function($rootScope, $state, voucherService, $stateParams, AppCo
             } 
         }
     });
+
+    voucherService.configWeChat();
+
 };
 
 module.exports = routerRun;

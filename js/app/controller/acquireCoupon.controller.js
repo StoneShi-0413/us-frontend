@@ -4,9 +4,9 @@ var controllersModule = require('./controllers');
 var controllerName = 'AcquireCouponController';
 var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, AppConstants, friendQueue) {
     $scope.couponResult = function($event) {
-        $event.preventDefault()
+       /* $event.preventDefault()
         var lotParam = AppConstants.queryString().lot;
-        /*voucherService.lottery(lotParam).success(function(response) {
+        voucherService.lottery(lotParam).success(function(response) {
             var rep = response;
             if (rep.result=="OK") {
                 alert(JSON.stringify(rep));
@@ -16,6 +16,8 @@ var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, A
         }).error(function(data) {
             alert(data.reason);
         });*/
+        
+        //just test
         var rep = {
             "id": 469,
             "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU",

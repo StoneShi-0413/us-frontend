@@ -5,7 +5,7 @@ var AppConstants = {
     //protocol : 'https://',
 
     /*local test */
-    applicationIp: 'www.us-app.com',
+    applicationIp: 'm.us-app.com',
 
     applicationPrefix: 'usmvn/weixin',
 
