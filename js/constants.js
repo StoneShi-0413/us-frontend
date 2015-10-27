@@ -42,24 +42,24 @@ var AppConstants = {
     },
 
     queryString: function() {
-        var query_string = {};
+        var queryString = {};
         var query = window.location.search.substring(1);
-        var vars = query.split("&");
+        var vars = query.split('&');
         for (var i = 0; i < vars.length; i++) {
-            var pair = vars[i].split("=");
+            var pair = vars[i].split('=');
             // If first entry with this name
-            if (typeof query_string[pair[0]] === "undefined") {
-                query_string[pair[0]] = decodeURIComponent(pair[1]);
+            if (typeof queryString[pair[0]] === 'undefined') {
+                queryString[pair[0]] = decodeURIComponent(pair[1]);
                 // If second entry with this name
-            } else if (typeof query_string[pair[0]] === "string") {
-                var arr = [query_string[pair[0]], decodeURIComponent(pair[1])];
-                query_string[pair[0]] = arr;
+            } else if (typeof queryString[pair[0]] === 'string') {
+                var arr = [queryString[pair[0]], decodeURIComponent(pair[1])];
+                queryString[pair[0]] = arr;
                 // If third or later entry with this name
             } else {
-                query_string[pair[0]].push(decodeURIComponent(pair[1]));
+                queryString[pair[0]].push(decodeURIComponent(pair[1]));
             }
         }
-        return query_string;
+        return queryString;
     },
 
     buildRoles: function(roles) {
@@ -94,14 +94,12 @@ var AppConstants = {
                     accessLevels[level] = {
                         bitMask: parseInt(resultBitMasks, 2)
                     };
-                } else console.log('Access Control Error: Could not parse' + accessLevelDeclarations[level] + ' as access definition for level ' + level);
-
+                }
             } else {
                 var resultBitMask = 0;
                 for (var role in accessLevelDeclarations[level]) {
                     if (userRoles.hasOwnProperty(accessLevelDeclarations[level][role]))
                         resultBitMask = resultBitMask | userRoles[accessLevelDeclarations[level][role]].bitMask;
-                    else console.log('Access Control Error: Could not find role' + accessLevelDeclarations[level][role] + ' in registered roles while building access for ' + level);
                 }
                 accessLevels[level] = {
                     bitMask: resultBitMask

@@ -8,7 +8,6 @@
     "angular-bootstrap" : "*",
     "angular-touch" : "*",
     "angular-animate": "*",
-    "moment": "2.8.3",
-    "SHA-1 ": "*"
+    "moment": "2.8.3"
   }
 }

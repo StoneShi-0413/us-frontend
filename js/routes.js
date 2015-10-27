@@ -101,7 +101,8 @@ var router = function($stateProvider, $urlRouterProvider) {
                         $state.go('couponResult');
                     } else {
                         friendQueue.queue = rslt;
-                    }*/
+                    }
+                    */
                 }
             }
         })

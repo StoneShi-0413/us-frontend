@@ -6,7 +6,7 @@ var gulp = require('gulp'),
     source = require('vinyl-source-stream'),
     sass = require('gulp-ruby-sass'),
     autoprefixer = require('gulp-autoprefixer'),
-    clean = require('gulp-clean'),
+    del = require('del'),
     changed = require('gulp-changed'),
     gulpif = require('gulp-if'),
     imagemin = require('gulp-imagemin'),
@@ -14,6 +14,8 @@ var gulp = require('gulp'),
     ngAnnotate = require('gulp-ng-annotate'),
     buffer = require('vinyl-buffer'),
     uglify = require('gulp-uglify'),
+    scp = require('gulp-scp2'),
+    runSequence = require('run-sequence'),
     isProduction = false;
 
 
@@ -49,12 +51,7 @@ gulp.task('dev', ['views', 'styles' /*, 'lint'*/ , 'browserify', 'images'], func
 
 // Clean task
 gulp.task('clean', function() {
-    gulp.src('./dist', {
-            read: false
-        }) // much faster
-        .pipe(clean({
-            force: true
-        }));
+    del.sync(['dist']);
 });
 
 // JSHint task
@@ -72,7 +69,7 @@ gulp.task('styles', function() {
         // Optionally add autoprefixer
         .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))
         // These last two should look familiar now :)
-        .pipe(gulp.dest('dist/css/'));
+        .pipe(gulp.dest('dist/css'));
 });
 
 // Browserify task
@@ -86,13 +83,22 @@ gulp.task('browserify', function() {
         .pipe(ngAnnotate());
 });
 
+// scp task
+gulp.task('scp', function() {
+    return gulp.src('./dist/**/*')
+        .pipe(scp({
+            host: 'www.us-app.com',
+            username: 'upload',
+            password: '18610555911',
+            dest: '/home/upload/coupon'
+        }))
+        .on('error', function(err) {
+            console.log(err);
+        });
+});
 
 // Views task
 gulp.task('views', function() {
-    // Get our index.html
-    gulp.src('index.html')
-        // And put it in the dist folder
-        .pipe(gulp.dest('dist/'));
 
     // Any other view files from app/views
     gulp.src('views/**/*')
@@ -100,6 +106,14 @@ gulp.task('views', function() {
         .pipe(gulp.dest('dist/views/'));
 });
 
+//index page
+gulp.task('index-page', function() {
+
+    // Any other view files from app/views
+    gulp.src('index.html')
+        // Will be put in the dist/views folder
+        .pipe(gulp.dest('dist/'));
+});
 
 gulp.task('images', function() {
 
@@ -114,11 +128,11 @@ gulp.task('images', function() {
 
 gulp.task('copy:setup', function() {
 
-    return  gulp.src(['scripts/*'])  
-            .pipe(gulp.dest('./components/'));  
+    return gulp.src(['scripts/*'])
+        .pipe(gulp.dest('./components/'));
 });
 
-gulp.task('watch', ['clean','copy:setup' ,'browserify', 'styles', 'views', 'images'], function() {
+gulp.task('watch', ['clean', 'copy:setup', 'browserify', 'styles', 'views', 'images', 'index-page'], function() {
     // Start webserver
     server.listen(serverport);
     // Start live reload
@@ -134,8 +148,12 @@ gulp.task('watch', ['clean','copy:setup' ,'browserify', 'styles', 'views', 'imag
         'styles'
     ]);
 
-    gulp.watch(['js/**/*.html'], [
+    gulp.watch(['views/**/*.html'], [
         'views'
+    ]);
+
+     gulp.watch(['index.html'], [
+        'index-page'
     ]);
 
     gulp.watch(['img/**/*'], [
@@ -146,5 +164,11 @@ gulp.task('watch', ['clean','copy:setup' ,'browserify', 'styles', 'views', 'imag
 
 });
 
+gulp.task('build', function(callback) {
+  runSequence('clean',
+              ['copy:setup', 'browserify', 'styles', 'views', 'images', 'index-page'],
+              'scp',
+              callback);
+});
 
 gulp.task('default', ['watch']);

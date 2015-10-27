@@ -8,7 +8,6 @@
         "express": "~4.1.1",
         "gulp": "^3.9.0",
         "gulp-autoprefixer": "0.0.7",
-        "gulp-clean": "~0.3.1",
         "gulp-changed": "^1.0.0",
         "gulp-connect": "^2.2.0",
         "gulp-jshint": "~1.5.5",
@@ -18,7 +17,10 @@
         "gulp-imagemin": "^1.1.0",
         "gulp-uglify": "^1.0.1",
         "gulp-util": "~2.2.14",
+        "gulp-scp2": "0.2.0",
         "gulp-ng-annotate": "1.1.0",
+        "run-sequence":"*",
+        "del":"2.0.2",
         "vinyl-buffer": "^1.0.0",
         "vinyl-source-stream": "^0.1.1",
         "tiny-lr": "0.0.7"

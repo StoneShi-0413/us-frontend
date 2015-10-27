@@ -13,7 +13,6 @@ require('./app/services/services');
 require('./app/directive/directives');
 require('./app/filter/filters');
 
-
 var AppConstants = require('./constants'),
     requires = [
         'ui.router',
@@ -29,9 +28,23 @@ var AppConstants = require('./constants'),
     lot = AppConstants.queryString().lot,
     app = angular.module('app', requires);
 
+function bootstrapApplication() {
+    angular.element(document).ready(function() {
+        app.constant('AppConstants', AppConstants);
+        app.config(require('./routes'));
+        app.value('friendQueue', {
+            'queue': '',
+            'myProfile': '',
+            'lot': lot
+        });
+        app.run(require('./routesChangeRun'));
+        angular.bootstrap($('body'), ['app']);
+    });
+}
+
 function fetchData() {
-    var initInjector = angular.injector(["ng"]);
-    var $http = initInjector.get("$http");
+    var initInjector = angular.injector(['ng']);
+    var $http = initInjector.get('$http');
     var url = AppConstants.getApiPrefix() + '/auth';
     return $http.get(url).then(function(response) {
         var authJson = response.data,
@@ -51,7 +64,9 @@ function fetchData() {
 
     });
     
-/*
+
+    /*
+
     //just test 
     var authJson = {
             "uid": 393561,
@@ -64,20 +79,8 @@ function fetchData() {
         };
     AppConstants.AppUser = tempUser;
     bootstrapApplication();*/
-}
 
-function bootstrapApplication() {
-    angular.element(document).ready(function() {
-        app.constant('AppConstants', AppConstants);
-        app.config(require('./routes'));
-        app.value('friendQueue', {
-            'queue': '',
-            'myProfile': '',
-            'lot': lot
-        });
-        app.run(require('./routesChangeRun'));
-        angular.bootstrap($('body'), ['app']);
-    });
+
 }
 
 fetchData();

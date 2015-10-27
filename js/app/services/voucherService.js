@@ -1,8 +1,8 @@
 'use strict';
 
 var servicesModule = require('./services.js');
-var serviceName = 'voucherService';
 var wx = require('../../../components/weixin-js-sdk');
+var serviceName = 'voucherService';
 var voucherService = function($http, $window, $location, $q, AppConstants) {
 
     var service = {};
@@ -14,11 +14,6 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
             cache: 'false'
         });
         return promise;
-    };
-
-    service.getAuth = function() {
-        var url = AppConstants.getApiPrefix() + '/auth';
-        return promise(url, 'GET');
     };
 
     service.authorize = function(accessLevel, role) {
@@ -42,44 +37,36 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
         url = url.replace(':lot', lot);
         return promise(url, 'GET');
     };
-
-
-    var invokeWxShareFriendApi = function(wxConfigObj) {
-        wx.config(wxConfigObj);
-    };
-
+    
     var getSignature = function() {
         var url = AppConstants.getApiPrefix() + '/signature';
         return promise(url, 'GET');
     };
 
+    var initialWxConfigObj = function(signatureObj) {
+        var wxConfigObj = {
+            debug: true,
+            appId: AppConstants.wxAppId,
+            timestamp: signatureObj.timestamp,
+            nonceStr: signatureObj.noncestr,
+            signature: signatureObj.signature,
+            jsApiList: [
+                'onMenuShareAppMessage'
+            ]
+        };
+        return wxConfigObj;
+    }
+
     service.configWeChat = function() {
-        var wxConfigObj = $window.sessionStorage.getItem('wxConfigObj');
-        if (!wxConfigObj) {
-            getSignature().then(function(response) {
-                wxConfigObj = {
-                    debug: true,
-                    appId: AppConstants.wxAppId,
-                    timestamp: response.data.timestamp,
-                    nonceStr: response.data.noncestr,
-                    signature: response.data.signature,
-                    jsApiList: [
-                        'onMenuShareAppMessage'
-                    ]
-                };
-                $window.sessionStorage.setItem('wxConfigObj', JSON.stringify(wxConfigObj));
-                invokeWxShareFriendApi(wxConfigObj);
-            });
-        } else {
-            wxConfigObj = JSON.parse(wxConfigObj);
-            invokeWxShareFriendApi(wxConfigObj);
-        }
+        getSignature().then(function(response) {
+            var wxConfigObj = initialWxConfigObj(response.data);
+            wx.config(wxConfigObj);
+        });
     };
 
 
     service.shareFriend = function() {
-        var wxLink =$window.location.href.split('#')[0];
-        alert(wxLink);
+        var wxLink = $window.location.href.split('#')[0];
         wx.ready(function() {
             wx.onMenuShareAppMessage({
                 title: 'message title', // 分享标题
@@ -97,6 +84,8 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
             });
         });
     };
+
+    service.test = function() {};
 
     return service;
 };
