@@ -30,7 +30,7 @@ var AppConstants = require('./constants'),
     app = angular.module('app', requires);
 
 function fetchData() {
-    /*var initInjector = angular.injector(["ng"]);
+    var initInjector = angular.injector(["ng"]);
     var $http = initInjector.get("$http");
     var url = AppConstants.getApiPrefix() + '/auth';
     return $http.get(url).then(function(response) {
@@ -49,9 +49,9 @@ function fetchData() {
             bootstrapApplication();
         }
 
-    });*/
+    });
     
-
+/*
     //just test 
     var authJson = {
             "uid": 393561,
@@ -63,7 +63,7 @@ function fetchData() {
             role: userRoles[value]
         };
     AppConstants.AppUser = tempUser;
-    bootstrapApplication();
+    bootstrapApplication();*/
 }
 
 function bootstrapApplication() {

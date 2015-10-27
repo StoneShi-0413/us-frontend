@@ -13,10 +13,6 @@ var AppConstants = {
 
     wxAppId : 'wx31332c571c074678',
 
-    wxAppSecret : 'fae6b8ee18fbfc2a6c382207d1525c36',
-
-    wxApi : 'https://api.weixin.qq.com/cgi-bin/',
-
     roles: [
         'redirect', //'public',
         'us_id',
