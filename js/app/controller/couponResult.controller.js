@@ -2,7 +2,8 @@
 
 var controllersModule = require('./controllers');
 var controllerName = 'CouponResultController';
-var wx = require('../../../components/weixin-js-sdk');
+
+
 
 var pickUpSamePackageName = function(arr, AppConstants) {
     var vouchers = AppConstants.vouchers,
@@ -17,64 +18,76 @@ var pickUpSamePackageName = function(arr, AppConstants) {
     return voucherName;
 };
 
-var couponResultCtrl = function($scope, $stateParams, friendQueue, AppConstants) {
-     var lotteryObject = friendQueue.myProfile;
-     lotteryObject.couponsName = pickUpSamePackageName( friendQueue.myProfile.coupons, AppConstants);
-     
-     alert('lotteryObject   --->  ' + JSON.stringify(lotteryObject));
+var couponResultCtrl = function($scope, $stateParams, friendQueue, voucherService, AppConstants) {
+  /*
+    //just test
+    var rep = {
+            "id": 469,
+            "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU",
+            "name": "stone",
+            "iconid": 4066,
+            "coupons": "[5]",
+            "lot_date": 1445515636000
+        },
 
-     alert('before --->' + JSON.stringify(friendQueue.queue));
 
-     friendQueue.queue = angular.forEach( friendQueue.queue, function(item, index) {
-         item.couponsName = pickUpSamePackageName(item.coupons, AppConstants);
-         item.profileImgUrl = 'http://www.us-app.com/usmvn/image/' + item.iconid;
-         return item;
-     });
+        rslt = [{
+            "id": 469,
+            "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU",
+            "name": "stone",
+            "iconid": 4066,
+            "coupons": "[5]",
+            "lot_date": 1445515636000
+        }, {
+            "id": 481,
+            "us_id": "o-AMtt0STmpVmQTQnJtojmwJ84UY",
+            "name": "StoneShi",
+            "iconid": 4166,
+            "coupons": "[6]",
+            "lot_date": 1445515636000
+        }, {
+            "id": 487,
+            "us_id": "o-AMtt5Of53HcHvHpndw0n-t-4Dg",
+            "name": "@左眼睛 ",
+            "iconid": 133,
+            "coupons": "[6]",
+            "lot_date": 1445515636000
+        }, {
+            "id": 493,
+            "us_id": "oDmUQs32j4UUlVs07T3CZsKqO680",
+            "code": "4719",
+            "coupons": "[7]",
+            "lot_date": 1445515636000
+        }];
 
-     alert('final --->'+JSON.stringify(friendQueue.queue));
+    friendQueue.queue = rslt;
+    friendQueue.myProfile = rep;
 
-     
-     $scope.lotteryObj = lotteryObject;
-     $scope.friendQueues = friendQueue.queue;
-     if (lotteryObject.hasOwnProperty('code')) {
-         $scope.code = lotteryObject.code;
-         $scope.img_url = './img/vouchered2.jpg';
-     } else {
-         $scope.code = '';
-         $scope.img_url = './img/vouchered1.jpg';
-     }
+*/
+    /**   test end   **/
+    voucherService.shareFriend();
+    var lotteryObject = friendQueue.myProfile;
+    lotteryObject.couponsName = pickUpSamePackageName(friendQueue.myProfile.coupons, AppConstants);
+
+    friendQueue.queue = angular.forEach(friendQueue.queue, function(item, index) {
+        item.couponsName = pickUpSamePackageName(item.coupons, AppConstants);
+        item.profileImgUrl = AppConstants.protocol + AppConstants.applicationIp + '/usmvn/image/' + item.iconid;
+        return item;
+    });
+
+
+    $scope.lotteryObj = lotteryObject;
+    $scope.friendQueues = friendQueue.queue;
+    if (lotteryObject.hasOwnProperty('code')) {
+        $scope.code = lotteryObject.code;
+        $scope.img_url = './img/vouchered2.jpg';
+    } else {
+        $scope.code = '';
+        $scope.img_url = './img/vouchered1.jpg';
+    }
 
     $scope.shareFriend = function() {
-        /*wx.config({
-            debug: false,
-            appId: '<?php echo $signPackage["appId"];?>',
-            timestamp: <?php echo $signPackage["timestamp"];?>,
-            nonceStr: '<?php echo $signPackage["nonceStr"];?>',
-            signature: '<?php echo $signPackage["signature"];?>',
-            jsApiList: [
-                // 所有要调用的 API 都要加到这个列表中
-                'checkJsApi',
-                'openLocation',
-                'getLocation',
-                'onMenuShareTimeline',
-                'onMenuShareAppMessage'
-            ]
-        });
-
-        wx.onMenuShareAppMessage({
-            title: '', // 分享标题
-            desc: '', // 分享描述
-            link: '', // 分享链接
-            imgUrl: '', // 分享图标
-            type: '', // 分享类型,music、video或link，不填默认为link
-            dataUrl: '', // 如果type是music或video，则要提供数据链接，默认为空
-            success: function() {
-                // 用户确认分享后执行的回调函数
-            },
-            cancel: function() {
-                // 用户取消分享后执行的回调函数
-            }
-        });*/
+        voucherService.test();
     }
 
 

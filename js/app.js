@@ -13,7 +13,6 @@ require('./app/services/services');
 require('./app/directive/directives');
 require('./app/filter/filters');
 
-
 var AppConstants = require('./constants'),
     requires = [
         'ui.router',
@@ -29,16 +28,26 @@ var AppConstants = require('./constants'),
     lot = AppConstants.queryString().lot,
     app = angular.module('app', requires);
 
+function bootstrapApplication() {
+    angular.element(document).ready(function() {
+        app.constant('AppConstants', AppConstants);
+        app.config(require('./routes'));
+        app.value('friendQueue', {
+            'queue': '',
+            'myProfile': '',
+            'lot': lot
+        });
+        app.run(require('./routesChangeRun'));
+        angular.bootstrap($('body'), ['app']);
+    });
+}
+
 function fetchData() {
-    var initInjector = angular.injector(["ng"]);
-    var $http = initInjector.get("$http");
+    var initInjector = angular.injector(['ng']);
+    var $http = initInjector.get('$http');
     var url = AppConstants.getApiPrefix() + '/auth';
     return $http.get(url).then(function(response) {
         var authJson = response.data,
-            /*authJson = {
-                "uid": 393561,
-                "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU"
-            },*/
             value = authJson.hasOwnProperty('us_id') ? 'us_id' : (authJson.hasOwnProperty('uid') ? 'uid' : (authJson.hasOwnProperty('redirect') ? 'redirect' : 'redirect')),
             tempUser = {
                 userObj: authJson,
@@ -54,20 +63,24 @@ function fetchData() {
         }
 
     });
-}
+    
 
-function bootstrapApplication() {
-    angular.element(document).ready(function() {
-        app.constant('AppConstants', AppConstants);
-        app.config(require('./routes'));
-        app.value('friendQueue', {
-            'queue': '',
-            'myProfile': '',
-            'lot': lot
-        });
-        app.run(require('./routesChangeRun'));
-        angular.bootstrap($('body'), ['app']);
-    });
+    /*
+
+    //just test 
+    var authJson = {
+            "uid": 393561,
+            "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU"
+        },
+        value = authJson.hasOwnProperty('us_id') ? 'us_id' : (authJson.hasOwnProperty('uid') ? 'uid' : (authJson.hasOwnProperty('redirect') ? 'redirect' : 'redirect')),
+        tempUser = {
+            userObj: authJson,
+            role: userRoles[value]
+        };
+    AppConstants.AppUser = tempUser;
+    bootstrapApplication();*/
+
+
 }
 
 fetchData();

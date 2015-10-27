@@ -2,7 +2,7 @@
 
 var routerRun = function($rootScope, $state, voucherService, $stateParams, AppConstants) {
     
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+    $rootScope.$on('$stateChangeStart', function(event, toState) {
 
         if (!('data' in toState) || !('access' in toState.data)) {
             event.preventDefault();
@@ -17,6 +17,8 @@ var routerRun = function($rootScope, $state, voucherService, $stateParams, AppCo
             } 
         }
     });
+    voucherService.configWeChat();
+
 };
 
 module.exports = routerRun;
