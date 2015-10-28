@@ -29,11 +29,11 @@ var router = function($stateProvider, $urlRouterProvider) {
 
 
                 getFriendQueue: function(AppConstants, friendQueue, voucherService, $state) {
-                    voucherService.getParticipants(friendQueue.lot).then(function(rep) {
+                    voucherService.getParticipants(friendQueue.lot).then(function successCallback(rep) {
 
                         var indexSplice = -1,
                             rslt = rep.data;
-            
+
                         angular.forEach(rslt, function(item, index) {
                             if (item.us_id === AppConstants.AppUser.userObj.us_id) {
                                 indexSplice = index;
@@ -50,6 +50,11 @@ var router = function($stateProvider, $urlRouterProvider) {
                             $state.go('couponResult');
                         } else {
                             friendQueue.queue = rslt;
+                        }
+                    }, function errorCallback(response) {
+                        var messageObj = response.data;
+                        if(messageObj.reason === '无效的lot值'){
+                            $state.go('notFound',{message:AppConstants.messages[messageObj.reason]});
                         }
                     });
                     /*
@@ -135,6 +140,22 @@ var router = function($stateProvider, $urlRouterProvider) {
 
                         $window.location.href = url;
                     }
+                }
+            }
+        })
+        .state('notFound', {
+            url: '/notFound/:message',
+            data: {
+                access: accessLevels.notFound
+            },
+            views: {
+                'contentview': {
+                    templateUrl: './views/templates/notFound.html',
+                    controller: 'NotFoundController'
+                },
+                'headerview': {
+                    templateUrl: './views/templates/header.html',
+                    controller: 'HeaderController'
                 }
             }
         });

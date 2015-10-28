@@ -5,3 +5,4 @@ module.exports = controllers;
 require('./couponResult.controller');
 require('./header.controller');
 require('./acquireCoupon.controller');
+require('./notFound.controller');

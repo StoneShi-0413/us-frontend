@@ -45,7 +45,7 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
 
     var initialWxConfigObj = function(signatureObj) {
         var wxConfigObj = {
-            debug: true,
+            debug: false,
             appId: AppConstants.wxAppId,
             timestamp: signatureObj.timestamp,
             nonceStr: signatureObj.noncestr,
@@ -66,13 +66,14 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
 
 
     service.shareFriend = function() {
-        var wxLink = $window.location.href.split('#')[0];
+        var wxImgLink = $window.location.href.split('index.html')[0] + 'img/' + AppConstants.redPackObj.img,
+            wxLink = $window.location.href.split('#')[0] 
         wx.ready(function() {
             wx.onMenuShareAppMessage({
-                title: 'message title', // 分享标题
-                desc: 'message desc', // 分享描述
+                title: AppConstants.redPackObj.title, // 分享标题
+                desc: AppConstants.redPackObj.desc, // 分享描述
                 link: wxLink, // 分享链接
-                imgUrl: AppConstants.protocol + AppConstants.applicationIp + '/usmvn/image/4166', // 分享图标
+                imgUrl: wxImgLink, // 分享图标
                 success: function() {
                     // 用户确认分享后执行的回调函数
                     alert('success');

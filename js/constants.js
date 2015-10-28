@@ -11,7 +11,7 @@ var AppConstants = {
 
     applicationPort: '8080',
 
-    wxAppId : 'wx31332c571c074678',
+    wxAppId: 'wx31332c571c074678',
 
     roles: [
         'redirect', //'public',
@@ -27,14 +27,26 @@ var AppConstants = {
         'notFound': '*'
     },
 
-    vouchers: [
-        {'group':'[5]','name':'10元'},
-        {'group':'[6]','name':'20元'},
-        {'group':'[7]','name':'30元'},
-        {'group':'[8]','name':'75折'},
-        {'group':'[5,5,6,6,7,7,8]','name':'大礼包'}
+    vouchers: [{
+            'group': '[5]',
+            'name': '10元'
+        }, {
+            'group': '[6]',
+            'name': '20元'
+        }, {
+            'group': '[7]',
+            'name': '30元'
+        }, {
+            'group': '[8]',
+            'name': '75折'
+        }, {
+            'group': '[5,5,6,6,7,7,8]',
+            'name': '大礼包'
+        }
 
     ],
+
+
 
     getApiPrefix: function() {
         var apiPrefix = AppConstants.protocol + AppConstants.applicationIp + '/' + AppConstants.applicationPrefix;
@@ -108,6 +120,17 @@ var AppConstants = {
             }
         }
         return accessLevels;
+    },
+
+    messages: {
+        '无效的lot值': '对不起该红包已抢完'
+    },
+
+
+    redPackObj: {
+        'title': 'US尊享券',
+        'desc': '抢US尊享券，享免费入场及酒水。',
+        'img': 'redpack.png'
     }
 };
 
