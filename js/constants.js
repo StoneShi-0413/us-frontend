@@ -27,7 +27,8 @@ var AppConstants = {
     accessLevels: {
         'couponResult': ['us_id', 'result'],
         'acquireCoupon': ['us_id'],
-        'notAuth': ['redirect']
+        'notAuth': ['redirect'],
+        'notFound': '*'
     },
 
     vouchers: [
