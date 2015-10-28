@@ -29,7 +29,7 @@ var router = function($stateProvider, $urlRouterProvider) {
 
 
                 getFriendQueue: function(AppConstants, friendQueue, voucherService, $state) {
-                    /*voucherService.getParticipants(friendQueue.lot).then(function(rep) {
+                    voucherService.getParticipants(friendQueue.lot).then(function(rep) {
 
                         var indexSplice = -1,
                             rslt = rep.data;
@@ -51,8 +51,8 @@ var router = function($stateProvider, $urlRouterProvider) {
                         } else {
                             friendQueue.queue = rslt;
                         }
-                    });*/
-                    
+                    });
+                    /*
                     //just test
                     var indexSplice = -1,
                         //rslt = rep.data;
@@ -102,6 +102,7 @@ var router = function($stateProvider, $urlRouterProvider) {
                     } else {
                         friendQueue.queue = rslt;
                     }
+                    */
                 }
             }
         })

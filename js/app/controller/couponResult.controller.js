@@ -19,7 +19,7 @@ var pickUpSamePackageName = function(arr, AppConstants) {
 };
 
 var couponResultCtrl = function($scope, $stateParams, friendQueue, voucherService, AppConstants) {
-  
+  /*
     //just test
     var rep = {
             "id": 469,
@@ -63,6 +63,9 @@ var couponResultCtrl = function($scope, $stateParams, friendQueue, voucherServic
     friendQueue.queue = rslt;
     friendQueue.myProfile = rep;
 
+*/
+    /**   test end   **/
+    voucherService.shareFriend();
     var lotteryObject = friendQueue.myProfile;
     lotteryObject.couponsName = pickUpSamePackageName(friendQueue.myProfile.coupons, AppConstants);
 
@@ -83,7 +86,9 @@ var couponResultCtrl = function($scope, $stateParams, friendQueue, voucherServic
         $scope.img_url = './img/vouchered1.jpg';
     }
 
-    $scope.shareFriend = function() {}
+    $scope.shareFriend = function() {
+        voucherService.test();
+    }
 
 
 };
