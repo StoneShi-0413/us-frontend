@@ -1,7 +1,8 @@
 'use strict';
 
+var bootstraps = require('./bootstrapOn');
 var routerRun = function($rootScope, $state, voucherService, $stateParams, AppConstants) {
-    
+
     $rootScope.$on('$stateChangeStart', function(event, toState) {
 
         if (!('data' in toState) || !('access' in toState.data)) {
@@ -14,10 +15,12 @@ var routerRun = function($rootScope, $state, voucherService, $stateParams, AppCo
                     redirect: tempUser.userObj.redirect
                 });
                 event.preventDefault();
-            } 
+            }
         }
     });
     voucherService.configWeChat();
+
+    bootstraps.isAndroid();
 
 };
 

@@ -1,11 +1,11 @@
 <div class="container text-center">
     <div class="us-container text1">
         <div class="counter">
-            <div style="text-align:center;" class="money">
+            <div style="text-align:center;" class="money dynamic-h1">
                 <p>{{lotteryObj.couponsName}}</p>
             </div>
             <div style="text-align:center;" class="over">
-                <p>{{lotteryObj.code}}</p>
+                <p class=" dynamic-h3">{{lotteryObj.code}}</p>
             </div>
             <img class="img-responsive" ng-src="{{img_url}}" />
         </div>
@@ -14,7 +14,7 @@
         <img class="img-responsive" src="./img/wechat.jpg" />
     </div>
     <div class="us-container text1">
-        <button class="btn btn-sm us-btn" type="button" ng-click="openApp()"><span class="us-btn-font-responsive">打开US立即购票</span></button>
+        <button class="btn btn-sm us-btn" type="button" ng-click="openApp()"><span class="dynamic-h2">打开US立即购票</span></button>
     </div>
     <div class="us-container text1">
         <img class="img-responsive" src="./img/text.jpg" />
@@ -24,25 +24,21 @@
             <div class="us-container">
                 <img class="img-responsive" src="./img/friend_luckey.png" />
             </div>
-            <table class="table table-responsive ">
-                <tr ng-repeat='friend in friendQueues'>
-                    <td class="thumbnail-img-person">
-                        <div class="col-sm-4">
-                            <div class="thumbnail">
-                                <img src="{{friend.profileImgUrl}}" alt="..." class="">
-                            </div>
-                        </div>
-                    </td>
-                    <td class="person">
-                        <p class="person-name">{{friend.name}}</p>
-                        <p class="person-comments">炒鸡棒，领券领到手软</p>
-                        <p class="comments-date">{{friend.lot_date | date:'yyyy-MM-dd HH:mm:ss'}}</p>
-                    </td>
-                    <td class="price-unit">
-                        <p class="price-unit">{{friend.couponsName}}</p>
-                    </td>
-                </tr>
-            </table>
+            <div class="person" ng-repeat='friend in friendQueues'>
+                <div class="row" >
+                    <div class="col-lg-5 col-sm-2">
+                        <img src="{{friend.profileImgUrl}}" class="ra-avatar img-responsive">
+                    </div>
+                    <div class="col-lg-7 col-sm-5">
+                        <span class="ra-name">{{friend.name}}</span>
+                        <span class="ra-desc">炒鸡棒，领券领到手软</span>
+                        <div class="ra-time">{{friend.lot_date | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                    </div>
+                    <div class="col-lg-7 col-sm-3">
+                        <p class="couponsName">{{friend.couponsName}}</p>
+                    </div>
+                </div>
+            </div>
         </article>
     </section>
 </div>

@@ -69,12 +69,12 @@
         background-color: #00fcfe;
         font-family: 'Microsoft YaHei';
         border-radius: 10px;
-        width: 42%;
         display: block;
         margin: 0 auto;
-        height: 43px;
         font-weight: bold;
+        width: 50%;
         border: 0px;
+        padding: 1em 0;
     }
     
     .us-container {
@@ -132,62 +132,6 @@
             text-align: center;
         }
     }
-    /* ----------- iPhone 4 and 4S ----------- */
-    /* Portrait and Landscape */
-    
-    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {}
-    /* Portrait */
-    
-    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-        .us-btn {
-            height: 44px;
-            border-radius: 10px;
-        }
-        .us-btn-font-responsive {
-            font-size: 12px;
-        }
-        .rule-title .title {
-            width: 41%;
-        }
-        .over {
-            p {
-                font-size: 13px;
-            }
-        }
-        .money {
-            p {
-                font-size: 46px;
-                margin: 0px;
-                padding: 0;
-            }
-        }
-    }
-    /* Landscape */
-    
-    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-        .us-btn {
-            height: 71px;
-            border-radius: 17px;
-        }
-        .us-btn-font-responsive {
-            font-size: 21px;
-        }
-        .rule-title .title {
-            width: 21%;
-        }
-        .over {
-            p {
-                font-size: 18px;
-            }
-        }
-        .money {
-            p {
-                font-size: 67px;
-                margin: 0px;
-                padding: 0;
-            }
-        }
-    }
     
     .row {
         display: inline-block;
@@ -232,457 +176,7 @@
     }
     
     .text1 {
-        margin-top: 1%;
-    }
-    /* ----------- iPhone 5 and 5S ----------- */
-    /* Portrait and Landscape */
-    
-    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {}
-    /* Portrait */
-    
-    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-        .us-btn {
-            height: 44px;
-            border-radius: 10px;
-        }
-        .us-btn-font-responsive {
-            font-size: 13px;
-        }
-        .rule-title .title {
-            width: 41%;
-        }
-        .rule-title1 .title {
-            width: 42%;
-        }
-        .price-unit {
-            display: inline-block;
-            font-size: 23px;
-            color: #00fcfe;
-        }
-        .over {
-            p {
-                font-size: 13px;
-            }
-        }
-    }
-    /* Landscape */
-    
-    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-        .us-btn {
-            height: 71px;
-            border-radius: 17px;
-        }
-        .us-btn-font-responsive {
-            font-size: 22px;
-        }
-        .rule-title .title {
-            width: 25%;
-        }
-        .rule-title1 .title {
-            width: 29%;
-        }
-        .price-unit {
-            display: inline-block;
-            font-size: 23px;
-            color: #00fcfe;
-        }
-        .over {
-            p {
-                font-size: 22px;
-            }
-        }
-        .money {
-            p {
-                font-size: 80px;
-                margin: 0px;
-                padding: 0;
-            }
-        }
-    }
-    
-    table {
-        background-color: transparent;
-        border-collapse: collapse;
-    }
-    
-    caption {
-        padding-top: 8px;
-        padding-bottom: 8px;
-        color: #777;
-        text-align: left;
-    }
-    
-    .table {
-        width: 95%;
-        margin: 0 auto;
-        max-width: 100%;
-        margin-bottom: 20px;
-    }
-    
-    .table > thead > tr > th {
-        vertical-align: bottom;
-        border-bottom: 2px solid #ddd;
-    }
-    
-    .table > caption + thead > tr:first-child > th,
-    .table > colgroup + thead > tr:first-child > th,
-    .table > thead:first-child > tr:first-child > th,
-    .table > caption + thead > tr:first-child > td,
-    .table > colgroup + thead > tr:first-child > td,
-    .table > thead:first-child > tr:first-child > td {
-        border-top: 0;
-    }
-    
-    .table > tbody + tbody {
-        border-top: 2px solid #ddd;
-    }
-    
-    .table-condensed > thead > tr > th,
-    .table-condensed > tbody > tr > th,
-    .table-condensed > tfoot > tr > th,
-    .table-condensed > thead > tr > td,
-    .table-condensed > tbody > tr > td,
-    .table-condensed > tfoot > tr > td {
-        padding: 5px;
-    }
-    
-    .table-bordered {
-        border: 1px solid #ddd;
-    }
-    
-    .table-bordered > thead > tr > th,
-    .table-bordered > tbody > tr > th,
-    .table-bordered > tfoot > tr > th,
-    .table-bordered > thead > tr > td,
-    .table-bordered > tbody > tr > td,
-    .table-bordered > tfoot > tr > td {
-        border: 1px solid #ddd;
-    }
-    
-    .table-bordered > thead > tr > th,
-    .table-bordered > thead > tr > td {
-        border-bottom-width: 2px;
-    }
-    
-    table col[class*="col-"] {
-        position: static;
-        display: table-column;
-        float: none;
-    }
-    
-    table td[class*="col-"],
-    table th[class*="col-"] {
-        position: static;
-        display: table-cell;
-        float: none;
-    }
-    
-    .table tbody {
-        padding: 0%;
-        td {
-            height: 99%;
-            margin: 0;
-            padding: 0;
-        }
-    }
-    
-    .table-responsive {
-        min-height: .01%;
-        overflow-x: auto;
-    }
-    /* ----------- iPhone 6 ----------- */
-    /* Portrait and Landscape */
-    
-    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {}
-    /* Portrait */
-    
-    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-        .us-btn {
-            border-radius: 13px;
-            height: 51px;
-        }
-        .us-btn-font-responsive {
-            font-size: 17px;
-        }
-        .rule-title1 .title,
-        .rule-title .title {
-            width: 37%;
-        }
-        .price-unit {
-            display: inline-block;
-            font-size: 30px;
-            color: #00fcfe;
-        }
-        .over {
-            p {
-                font-size: 17px
-            }
-        }
-        .money {
-            top: 2%;
-            p {
-                font-size: 54px;
-                margin: 0px;
-                padding: 0;
-            }
-        }
-    }
-    /* Landscape */
-    
-    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-        .us-btn {
-            height: 71px;
-            border-radius: 17px;
-        }
-        .us-btn-font-responsive {
-            font-size: 22px;
-        }
-        .rule-title1 .title,
-        .rule-title .title {
-            width: 25%;
-        }
-        .price-unit {
-            display: inline-block;
-            font-size: 34px;
-            color: #00fcfe;
-        }
-        .over {
-            p {
-                font-size: 23px
-            }
-            margin-bottom: 3px;
-        }
-        .money {
-            p {
-                font-size: 90px;
-                margin: 0px;
-                padding: 0;
-            }
-        }
-    }
-    /* ----------- iPhone 6+ ----------- */
-    /* Portrait and Landscape */
-    
-    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {}
-    /* Portrait */
-    
-    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {
-        .us-btn {
-            height: 55px;
-            border-radius: 12px;
-        }
-        .us-btn-font-responsive {
-            font-size: 19px;
-        }
-        .rule-title1 .title,
-        .rule-title .title {
-            width: 35%;
-        }
-        .price-unit {
-            display: inline-block;
-            font-size: 33px;
-            color: #00fcfe;
-        }
-        .money {
-            top: 3%;
-            p {
-                font-size: 62px;
-                margin: 0px;
-                padding: 0;
-            }
-        }
-    }
-    /* Landscape */
-    
-    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-        .us-btn {
-            border-radius: 16px;
-            height: 72px;
-        }
-        .us-btn-font-responsive {
-            font-size: 25px;
-        }
-        .rule-title1 .title,
-        .rule-title .title {
-            width: 25%;
-        }
-        .price-unit {
-            display: inline-block;
-            font-size: 35px;
-            color: #00fcfe;
-        }
-        .over {
-            p {
-                font-size: 27px
-            }
-            margin-bottom: 3px;
-        }
-        .money {
-            top: 3%;
-            p {
-                font-size: 105px;
-                margin: 0px;
-                padding: 0;
-            }
-        }
-    }
-    /* ----------- iPad mini ----------- */
-    /* Portrait and Landscape */
-    
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
-        .us-btn {
-            height: 71px;
-            border-radius: 17px;
-        }
-        .us-btn-font-responsive {
-            font-size: 26px;
-        }
-        .rule-title1 .title,
-        .rule-title .title {
-            width: 23%;
-        }
-        .price-unit {
-            display: inline-block;
-            font-size: 45px;
-            color: #00fcfe;
-        }
-        .over {
-            p {
-                font-size: 38px
-            }
-            margin-bottom: 3px;
-        }
-    }
-    /* iPad mini in landscape */
-    
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 1) {
-        /* STYLES GO HERE */
-        .money {
-            top: 4%;
-            p {
-                font-size: 138px;
-                margin: 0px;
-                padding: 0;
-            }
-        }
-    }
-    /* iPad mini in portrait */
-    
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 1) {
-        /* STYLES GO HERE */
-        .money {
-            top: 4%;
-            p {
-                font-size: 98px;
-                margin: 0px;
-                padding: 0;
-            }
-        }
-    }
-    /* ----------- iPad 1 and 2 ----------- */
-    /* Portrait and Landscape */
-    
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1) {
-        .us-btn {
-            height: 71px;
-            border-radius: 17px;
-        }
-        .us-btn-font-responsive {
-            font-size: 26px;
-        }
-        .rule-title1 .title,
-        .rule-title .title {
-            width: 23%;
-        }
-        .price-unit {
-            display: inline-block;
-            font-size: 45px;
-            color: #00fcfe;
-        }
-        .over {
-            p {
-                font-size: 38px
-            }
-            margin-bottom: 1px;
-        }
-    }
-    /* ----------- iPad 3 and 4 ----------- */
-    /* Portrait and Landscape */
-    
-    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 2) {
-        .us-btn {
-            height: 71px;
-            border-radius: 17px;
-        }
-        .us-btn-font-responsive {
-            font-size: 26px;
-        }
-        .rule-title1 .title,
-        .rule-title .title {
-            width: 23%;
-        }
-        .price-unit {
-            display: inline-block;
-            font-size: 49px;
-            color: #00fcfe;
-        }
-        .over {
-            p {
-                font-size: 38px
-            }
-            margin-bottom: 1px;
-        }
-    }
-    
-    @media only screen and (min-device-width: 1024px) {
-        .us-btn {
-            height: 71px;
-            border-radius: 17px;
-        }
-        .us-btn-font-responsive {
-            font-size: 26px;
-        }
-        .rule-title1 .title,
-        .rule-title .title {
-            width: 17%;
-        }
-        .price-unit {
-            display: inline-block;
-            font-size: 49px;
-            color: #00fcfe;
-        }
-        .over {
-            p {
-                font-size: 38px
-            }
-            margin-bottom: 1px;
-        }
-    }
-    
-    .thumbnail-img-person {
-        text-align: right;
-        max-width: 64px;
-    }
-    
-    .person {
-        text-align: left;
-    }
-    
-    .table {
-        tr {
-            .person {
-                .person-name {
-                    color: #00fcfe;
-                }
-                .person-comments {
-                    color: white;
-                }
-                p {
-                    margin: 0px;
-                    padding: 0px 2%;
-                }
-            }
-        }
+        margin-top: 3%;
     }
     
     img {
@@ -708,92 +202,211 @@
         padding: 0;
         p {
             padding: 0;
-            margin: 3%;
+            margin: 4%;
         }
     }
-    /**thumbnail*/
+    
+    .dynamic-h1 {
+        font-size: 12.7vw;
+        P {
+            font-size: 13.7vw;
+            margin: 0;
+            padding: 1%;
+        }
+    }
+    
+    .dynamic-h2 {
+        font-size: 5.3vw;
+        display: inline-block;
+        color: var(fontRed);
+    }
+    
+    .dynamic-h3 {
+        font-size: 4vw;
+    }
+    
+    .dynamic-p {
+        font-size: 2.5vw;
+    }
+    
+    .rules ol {
+        display: table;
+        margin: 0 auto;
+        max-width: 600px;
+        li {
+            font-size: 1.1em;
+        }
+    }
+    
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
+        /* Styles */
+        .rules ol {
+            li {
+                font-size: 2.4vw;
+            }
+        }
+    }
+    
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
+        /* Styles */
+        .rules ol {
+            li {
+                font-size: 2.5vw;
+            }
+        }
+    }
+    /* Desktops and laptops ----------- */
+    
+    @media only screen and (min-width: 1224px) {
+        .money {
+            top: 0;
+            P {
+                padding: 0;
+                font-size: 11vw;
+            }
+        }
+        .over {
+            p {
+                margin: 2%;
+                font-size: 4vw;
+            }
+        }
+    }
+    /* Large screens ----------- */
+    
+    @media only screen and (min-width: 1824px) {
+        /* Styles */
+        .money {
+            top: 0;
+            P {
+                padding: 0;
+                font-size: 8.7vw;
+            }
+        }
+        .over {
+            p {
+                margin: 3vh;
+                font-size: 3vw;
+            }
+        }
+    }
+    
+    .row {
+        margin-right: -15px;
+        margin-left: -15px;
+        max-width: 550px;
+    }
+    
+    .row:before,
+    .row:after {
+        display: table;
+        content: " ";
+    }
+    
+    .col-sm-2 {
+        width: 16.666666666666664%;
+        float: left;
+        margin-right: 2vw;
+    }
+    
+    .col-sm-3 {
+        width: 30%;
+        float: right;
+    }
+    
+    .col-sm-5 {
+        float: left;
+    }
     
     .col-xs-1,
-    .col-sm-1,
-    .col-md-1,
-    .col-lg-1,
     .col-xs-2,
-    .col-sm-2,
-    .col-md-2,
-    .col-lg-2,
     .col-xs-3,
-    .col-sm-3,
-    .col-md-3,
-    .col-lg-3,
     .col-xs-4,
-    .col-sm-4,
-    .col-md-4,
-    .col-lg-4,
     .col-xs-5,
-    .col-sm-5,
-    .col-md-5,
-    .col-lg-5,
     .col-xs-6,
-    .col-sm-6,
-    .col-md-6,
-    .col-lg-6,
     .col-xs-7,
-    .col-sm-7,
-    .col-md-7,
-    .col-lg-7,
     .col-xs-8,
-    .col-sm-8,
-    .col-md-8,
-    .col-lg-8,
     .col-xs-9,
-    .col-sm-9,
-    .col-md-9,
-    .col-lg-9,
     .col-xs-10,
-    .col-sm-10,
-    .col-md-10,
-    .col-lg-10,
     .col-xs-11,
-    .col-sm-11,
-    .col-md-11,
-    .col-lg-11,
     .col-xs-12,
+    .col-sm-1,
+    .col-sm-2,
+    .col-sm-3,
+    .col-sm-4,
+    .col-sm-5,
+    .col-sm-6,
+    .col-sm-7,
+    .col-sm-8,
+    .col-sm-9,
+    .col-sm-10,
+    .col-sm-11,
     .col-sm-12,
+    .col-md-1,
+    .col-md-2,
+    .col-md-3,
+    .col-md-4,
+    .col-md-5,
+    .col-md-6,
+    .col-md-7,
+    .col-md-8,
+    .col-md-9,
+    .col-md-10,
+    .col-md-11,
     .col-md-12,
+    .col-lg-1,
+    .col-lg-2,
+    .col-lg-3,
+    .col-lg-4,
+    .col-lg-5,
+    .col-lg-6,
+    .col-lg-7,
+    .col-lg-8,
+    .col-lg-9,
+    .col-lg-10,
+    .col-lg-11,
     .col-lg-12 {
         position: relative;
         min-height: 1px;
-        .thumbnail {
-            position: relative;
-            overflow: hidden;
-        }
-        .thumbnail {
-            display: block;
-            transition: all .2s ease-in-out;
-        }
-        .thumbnail>img,
-        .thumbnail a>img {
-            margin-left: auto;
-            margin-right: auto;
-        }
-        .img-responsive,
-        .thumbnail>img,
-        .thumbnail a>img,
-        .carousel-inner>.item>img,
-        .carousel-inner>.item>a>img {
-            display: block;
-            max-width: 100%;
-            height: auto;
-        }
-        img {
-            vertical-align: middle;
-        }
-        img {
-            border: 0;
-        }
-        * {
-            -webkit-box-sizing: border-box;
-            -moz-box-sizing: border-box;
-            box-sizing: border-box;
-        }
+    }
+    
+    .ra-avatar {
+        border: 1px solid #e7e7e7;
+        border-radius: 2px;
+    }
+    
+    .ra-name {
+        display: block;
+        font-size: 1.182em;
+        color: #00fcfe;
+        line-height: 3.8vh;
+        text-align: left;
+    }
+    
+    .ra-desc {
+        display: block;
+        font-size: 0.879em;
+        color: white;
+        line-height: 3.8vh;
+        text-align: left;
+    }
+    
+    .ra-time {
+        font-size: 0.8571em;
+        color: #ccc;
+        text-align: left;
+    }
+    
+    .person {
+        width: 100%;
+        margin-bottom: 1vh;
+    }
+    
+    .couponsName {
+        font-size: 6vw;
+        color: #00fcfe;
+        display: block;
+        margin: 0;
+        padding: 1vh 0;
+        margin-right: 1vh;
     }

@@ -25,6 +25,7 @@ var couponResultCtrl = function($scope, $stateParams, friendQueue, voucherServic
             "id": 469,
             "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU",
             "name": "stone",
+            "code": "4719",
             "iconid": 4066,
             "coupons": "[5]",
             "lot_date": 1445515636000

@@ -59,7 +59,9 @@ var router = function($stateProvider, $urlRouterProvider) {
                             });
                         }
                     });
-                    /*
+                    
+/*
+                    
                     //just test
                     var indexSplice = -1,
                         //rslt = rep.data;
