@@ -78,11 +78,10 @@ function fetchData() {
             role: userRoles[value]
         };
     AppConstants.AppUser = tempUser;
-    bootstrapApplication();*/
-
+    bootstrapApplication();
+*/
 
 }
 
-fetchData();
 
-                           
+fetchData();

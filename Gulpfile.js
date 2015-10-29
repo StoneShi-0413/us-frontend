@@ -54,6 +54,15 @@ gulp.task('clean', function() {
     del.sync(['dist']);
 });
 
+
+// font task
+gulp.task('font', function() {
+    // Any other view files from app/views
+    gulp.src('font/*')
+        // Will be put in the dist/views folder
+        .pipe(gulp.dest('dist/font/'));
+});
+
 // JSHint task
 gulp.task('lint', function() {
     gulp.src('js/*.js')
@@ -132,7 +141,7 @@ gulp.task('copy:setup', function() {
         .pipe(gulp.dest('./components/'));
 });
 
-gulp.task('watch', ['clean', 'copy:setup', 'browserify', 'styles', 'views', 'images', 'index-page'], function() {
+gulp.task('watch', ['clean', 'copy:setup', 'font', 'browserify', 'styles', 'views', 'images', 'index-page'], function() {
     // Start webserver
     server.listen(serverport);
     // Start live reload
@@ -166,7 +175,7 @@ gulp.task('watch', ['clean', 'copy:setup', 'browserify', 'styles', 'views', 'ima
 
 gulp.task('build', function(callback) {
   runSequence('clean',
-              ['copy:setup', 'browserify', 'styles', 'views', 'images', 'index-page'],
+              ['copy:setup', 'browserify', 'styles', 'views', 'images', 'index-page', 'font'],
               'scp',
               callback);
 });

@@ -37,7 +37,7 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
         url = url.replace(':lot', lot);
         return promise(url, 'GET');
     };
-    
+
     var getSignature = function() {
         var url = AppConstants.getApiPrefix() + '/signature';
         return promise(url, 'GET');
@@ -51,6 +51,7 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
             nonceStr: signatureObj.noncestr,
             signature: signatureObj.signature,
             jsApiList: [
+                'onMenuShareTimeline',
                 'onMenuShareAppMessage'
             ]
         };
@@ -67,7 +68,7 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
 
     service.shareFriend = function() {
         var wxImgLink = $window.location.href.split('index.html')[0] + 'img/' + AppConstants.redPackObj.img,
-            wxLink = $window.location.href.split('#')[0] 
+            wxLink = $window.location.href.split('#')[0]
         wx.ready(function() {
             wx.onMenuShareAppMessage({
                 title: AppConstants.redPackObj.title, // 分享标题
@@ -75,12 +76,18 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
                 link: wxLink, // 分享链接
                 imgUrl: wxImgLink, // 分享图标
                 success: function() {
-                    // 用户确认分享后执行的回调函数
-                    alert('success');
                 },
                 cancel: function() {
-                    // 用户取消分享后执行的回调函数
-                    alert('faile');
+                }
+            });
+
+            wx.onMenuShareTimeline({
+                title: AppConstants.redPackObj.title, // 分享标题
+                link: wxLink, // 分享链接
+                imgUrl: wxImgLink, // 分享图标
+                success: function() {
+                },
+                cancel: function() {
                 }
             });
         });

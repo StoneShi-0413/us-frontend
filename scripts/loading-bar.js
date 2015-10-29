@@ -126,18 +126,6 @@
                             }
                         }
 
-                        if (response.config.url.indexOf('.html') < 0) {
-                            var txt = JSON.stringify(response.data, null, "    ");
-                            txt += JSON.stringify(response.config.url, null, "    ");
-                            var info = document.createElement('div');
-                            info.innerText = txt;
-                            info.style.backgroundColor = 'yellow';
-                            info.style.color = 'red';
-                            info.style.marginTop = '20px';
-                            info.style.wordWrap = 'break-word';
-                            document.getElementById('jsonfomat').appendChild(info);
-
-                        }
                         return response;
                     },
 
@@ -160,21 +148,6 @@
                             }
                         }
 
-                        if (rejection.config.url.indexOf('.html') < 0) {
-
-                            var txt = JSON.stringify(rejection.data, null, "    ");
-
-                            txt += JSON.stringify(rejection.config.url, null, "    ");
-
-                            var info = document.createElement('div');
-                            info.innerText = txt;
-                            info.style.backgroundColor = 'yellow';
-                            info.style.color = 'red';
-                            info.style.marginTop = '20px';
-                            info.style.wordWrap = 'break-word';
-                            document.getElementById('jsonfomat').appendChild(info);
-
-                        }
                         return $q.reject(rejection);
                     }
                 };

@@ -62,8 +62,8 @@ var couponResultCtrl = function($scope, $stateParams, friendQueue, voucherServic
 
     friendQueue.queue = rslt;
     friendQueue.myProfile = rep;
-
 */
+
     /**   test end   **/
     voucherService.shareFriend();
     var lotteryObject = friendQueue.myProfile;

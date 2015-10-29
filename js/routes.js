@@ -53,8 +53,10 @@ var router = function($stateProvider, $urlRouterProvider) {
                         }
                     }, function errorCallback(response) {
                         var messageObj = response.data;
-                        if(messageObj.reason === '无效的lot值'){
-                            $state.go('notFound',{message:AppConstants.messages[messageObj.reason]});
+                        if (messageObj.reason === '无效的lot值') {
+                            $state.go('notFound', {
+                                message: AppConstants.messages[messageObj.reason]
+                            });
                         }
                     });
                     /*
@@ -106,8 +108,8 @@ var router = function($stateProvider, $urlRouterProvider) {
                         $state.go('couponResult');
                     } else {
                         friendQueue.queue = rslt;
-                    }
-                    */
+                    }*/
+
                 }
             }
         })

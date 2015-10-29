@@ -15,8 +15,8 @@ var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, A
         }).error(function(data) {
             alert(data.reason);
         });
-        
-        /*//just test
+        /*
+        //just test
         var rep = {
             "id": 469,
             "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU",
