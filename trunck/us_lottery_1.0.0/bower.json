@@ -1,0 +1,13 @@
+{
+  "name": "us-coupon",
+  "version": "1.0.0",
+  "dependencies": {
+    "jquery": "1.9.1",
+    "angular": "1.4.x",
+    "angular-ui-router": "~0.2.10",
+    "angular-bootstrap" : "*",
+    "angular-touch" : "*",
+    "angular-animate": "*",
+    "moment": "2.8.3"
+  }
+}

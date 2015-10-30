@@ -1,0 +1,6 @@
+.DS_Store
+dist/*
+css/*
+components/*
+.sass-cache/*
+node_modules/*

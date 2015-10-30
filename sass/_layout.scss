@@ -238,34 +238,6 @@
         }
     }
     
-    .row {
-        margin-right: -15px;
-        margin-left: -15px;
-        max-width: 550px;
-    }
-    
-    .row:before,
-    .row:after {
-        display: table;
-        content: " ";
-    }
-    
-    .col-sm-2 {
-        width: 16.666666666666664%;
-        float: left;
-        margin-right: 2vw;
-    }
-    
-    .col-sm-3 {
-        width: 30%;
-        float: right;
-    }
-    
-    .col-sm-5 {
-        width: 35%;
-        float: left;
-    }
-    
     .col-xs-1,
     .col-xs-2,
     .col-xs-3,
@@ -323,45 +295,90 @@
         border-radius: 2px;
     }
     
+    span {
+        padding: 0;
+        margin: 0;
+    }
+    
+    .row {
+        background-color: red;
+        max-width: 600px;
+        display: -webkit-box;
+        /* OLD - iOS 6-, Safari 3.1-6 */
+        display: -moz-box;
+        /* OLD - Firefox 19- (buggy but mostly works) */
+        display: -ms-flexbox;
+        /* TWEENER - IE 10 */
+        display: -webkit-flex;
+        /* NEW - Chrome */
+        display: flex;
+        /* NEW, Spec - Opera 12.1, Firefox 20+ */
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto;
+        height: 100%;
+    }
+    
+    .col-sm-2 {
+        width: 16.666666666666664%;
+        float: left;
+        margin-right: 1em;
+        background-color: yellow;
+        display: inline-block;
+        font-size: 0;
+    }
+    
+    .col-sm-5 {
+        width: 53.444444444444444%;
+        background-color: pink;
+        float: left;
+        height: 100%;
+    }
+    
+    .friend-couponsName {
+        float: right;
+        background-color: green;
+    }
+    
     .ra-name {
         display: block;
         font-size: 1.182em;
         color: #00fcfe;
-        line-height: 3.8vh;
         text-align: left;
+        background: blue;
+        height: 33.333333333%;
     }
     
     .ra-desc {
         display: block;
-        font-size: 0.879em;
+        font-size: 0.979em;
         color: white;
-        line-height: 2.9vh;
         text-align: left;
+        background: blue;
+        height: 33.333333333%;
     }
     
     .ra-time {
         font-size: 0.8571em;
         color: #ccc;
         text-align: left;
+        background: blue;
+        height: 33.333333333%;
+    }
+    
+    .ra-name:after {
+        content: "\0000a0";
+    }
+    
+    .couponsName {
+        color: #00fcfe;
+        padding: 0;
+        margin: 0;
     }
     
     .person {
         width: 100%;
         margin-bottom: 1vh;
-    }
-    
-    .couponsName {
-        font-size: 6vw;
-        color: #00fcfe;
-        display: block;
-        margin: 0;
-        padding: 1vh 0;
-        margin-right: 1vh;
-        text-align: right;
-    }
-    
-    .friend-couponsName {
-        float: right;
     }
     
     @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
@@ -399,7 +416,12 @@
         }
         .couponsName {
             padding: 0;
+            font-size: 4vw;
         }
+        /*.col-sm-5 {
+            width: 35%;
+            float: left;
+        }*/
     }
     /* Large screens ----------- */
     
@@ -418,14 +440,88 @@
                 font-size: 3vw;
             }
         }
-        .couponsName {
+        /*.couponsName {
             padding: 0;
-        }
-        .ra-desc {
-            line-height: 5.1vh;
-        }
+        }*/
     }
     
     .hide {
         display: none;
     }
+    
+    @media all and (orientation:landscape) {
+        /* Styles for Landscape screen */
+        /*.ra-name {
+            display: block;
+            font-size: 1.182em;
+            color: #00fcfe;
+            text-align: left;
+            margin-top: 2%;
+            margin-bottom: 8%;
+        }
+        .ra-desc {
+            display: block;
+            font-size: 0.979em;
+            color: white;
+            text-align: left;
+            margin-bottom: 7%;
+        }*/
+    }
+    /* ----------- iPhone 4 and 4S ----------- */
+    /* Portrait and Landscape */
+    
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {}
+    /* Portrait */
+    
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+        /* .col-sm-6 {
+            width: 55%;
+        }
+        .col-sm-3 {
+            width: 20%;
+            padding: 0;
+            margin: 0;
+        }*/
+    }
+    /* Landscape */
+    
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {}
+    /* ----------- iPhone 5 and 5S ----------- */
+    /* Portrait and Landscape */
+    
+    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {}
+    /* Portrait */
+    
+    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+        /*.col-sm-6 {
+            width: 55%;
+        }
+        .col-sm-3 {
+            width: 20%;
+            padding: 0;
+            margin: 0;
+        }*/
+    }
+    /* Landscape */
+    
+    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {}
+    /* ----------- iPhone 6 ----------- */
+    /* Portrait and Landscape */
+    
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {}
+    /* Portrait */
+    
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {}
+    /* Landscape */
+    
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {}
+    /* ----------- iPhone 6+ ----------- */
+    /* Portrait and Landscape */
+    
+    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {}
+    /* Portrait */
+    
+    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {}
+    /* Landscape */
+    
+    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {}

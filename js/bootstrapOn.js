@@ -8,7 +8,7 @@ var bootstrapStart = {
         if (isAndroidDevice) {
             // Do something!
             // Redirect to Android-site?
-           
+          	
         }
     }
 

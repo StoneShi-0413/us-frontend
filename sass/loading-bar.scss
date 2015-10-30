@@ -145,10 +145,17 @@
     z-index: 500000000;
     position: fixed;
     cursor: wait;
-    top:0;
-    left:0;
-    right:0;
-    bottom:0;
-    overflow:hidden;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
 }
 
+@media all and (orientation:portrait) {
+    /* Styles for Portrait screen */
+}
+
+@media all and (orientation:landscape) {
+    /* Styles for Landscape screen */
+}

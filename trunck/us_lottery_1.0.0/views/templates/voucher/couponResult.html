@@ -1,0 +1,45 @@
+<div class="container text-center">
+    <div class="us-container text1">
+        <div class="counter">
+            <div style="text-align:center;" class="money dynamic-h1">
+                <p>{{lotteryObj.couponsName}}</p>
+            </div>
+            <div style="text-align:center;" class="over">
+                <p class=" dynamic-h3">{{lotteryObj.code}}</p>
+            </div>
+            <img class="img-responsive" ng-if="!lotteryObj.code" src="./img/vouchered1.jpg" />
+            <img class="img-responsive" ng-if="lotteryObj.code" src="./img/vouchered2.jpg" />
+        </div>
+    </div>
+    <div class="us-container text1">
+        <img class="img-responsive" src="./img/wechat.jpg" />
+    </div>
+    <div class="us-container text1">
+        <button class="btn btn-sm us-btn" type="button" ng-click="openApp()"><span class="dynamic-h2">打开US立即购票</span></button>
+    </div>
+    <div class="us-container text1">
+        <img class="img-responsive" src="./img/text.jpg" />
+    </div>
+    <section class="rules">
+        <article>
+            <div class="us-container">
+                <img class="img-responsive" src="./img/friend_luckey.png" />
+            </div>
+            <div class="person" ng-repeat='friend in friendQueues'>
+                <div class="row" >
+                    <div class="col-lg-5 col-sm-2">
+                        <img src="{{friend.profileImgUrl}}" class="ra-avatar img-responsive">
+                    </div>
+                    <div class="col-lg-7 col-sm-5">
+                        <span class="ra-name">{{friend.name}}</span>
+                        <span class="ra-desc">炒鸡棒，领券领到手软</span>
+                        <div class="ra-time">{{friend.lot_date | date:'yyyy-MM-dd HH:mm:ss'}}</div>
+                    </div>
+                    <div class="col-lg-7 col-sm-5 friend-couponsName">
+                        <p class="couponsName">{{friend.couponsName}}</p>
+                    </div>
+                </div>
+            </div>
+        </article>
+    </section>
+</div>
