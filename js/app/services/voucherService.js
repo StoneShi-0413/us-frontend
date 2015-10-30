@@ -75,20 +75,16 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
                 desc: AppConstants.redPackObj.desc, // 分享描述
                 link: wxLink, // 分享链接
                 imgUrl: wxImgLink, // 分享图标
-                success: function() {
-                },
-                cancel: function() {
-                }
+                success: function() {},
+                cancel: function() {}
             });
 
             wx.onMenuShareTimeline({
                 title: AppConstants.redPackObj.title, // 分享标题
                 link: wxLink, // 分享链接
                 imgUrl: wxImgLink, // 分享图标
-                success: function() {
-                },
-                cancel: function() {
-                }
+                success: function() {},
+                cancel: function() {}
             });
         });
     };
