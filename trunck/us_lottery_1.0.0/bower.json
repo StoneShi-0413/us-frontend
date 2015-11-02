@@ -1,6 +1,6 @@
 {
   "name": "us-coupon",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "dependencies": {
     "jquery": "1.9.1",
     "angular": "1.4.x",
