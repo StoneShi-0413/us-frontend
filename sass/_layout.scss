@@ -132,12 +132,6 @@
         }
     }
     
-    .row {
-        display: inline-block;
-        width: 100%;
-        height: auto
-    }
-    
     .open {
         background: #040b22;
         width: 100%;
@@ -232,7 +226,6 @@
     .rules ol {
         display: table;
         margin: 0 auto;
-        max-width: 600px;
         li {
             font-size: 1.1em;
         }
@@ -301,8 +294,7 @@
     }
     
     .row {
-        background-color: red;
-        max-width: 600px;
+        //background-color: red;
         display: -webkit-box;
         /* OLD - iOS 6-, Safari 3.1-6 */
         display: -moz-box;
@@ -316,53 +308,56 @@
         align-items: center;
         justify-content: center;
         margin: 0 auto;
-        height: 100%;
+        height: auto;
+        flex-flow: row column;
+        .col {
+            padding-left: 1vw;
+            margin: 0;
+            padding-right: 0;
+        }
+        .col:nth-child(1) {
+            border-left: none;
+        }
+        ul li {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            font-size: 2.4000vw;
+        }
+        max-width:600px;
+        margin-bottom:2%;
     }
     
-    .col-sm-2 {
-        width: 16.666666666666664%;
-        float: left;
-        margin-right: 1em;
-        background-color: yellow;
-        display: inline-block;
-        font-size: 0;
+    .thumbnail {
+        flex: 1 1 30.0000000%;
     }
     
-    .col-sm-5 {
-        width: 53.444444444444444%;
-        background-color: pink;
-        float: left;
-        height: 100%;
+    .android-img {
+        width: 50%;   
     }
     
+    .col,
     .friend-couponsName {
-        float: right;
-        background-color: green;
+        flex: 1 1 100%;
     }
     
     .ra-name {
-        display: block;
-        font-size: 1.182em;
         color: #00fcfe;
         text-align: left;
-        background: blue;
         height: 33.333333333%;
     }
     
     .ra-desc {
-        display: block;
-        font-size: 0.979em;
+        /*font-size: 0.979em;*/
         color: white;
         text-align: left;
-        background: blue;
         height: 33.333333333%;
     }
     
     .ra-time {
-        font-size: 0.8571em;
+        /*font-size: 0.8571em;*/
         color: #ccc;
         text-align: left;
-        background: blue;
         height: 33.333333333%;
     }
     
@@ -370,15 +365,25 @@
         content: "\0000a0";
     }
     
+    @media all and (orientation:landscape) {
+        .col-sm-2 {
+            width: 3.66666666666666666%;
+        }
+        .row ul li {
+            list-style: none;
+        }
+    }
+    
     .couponsName {
         color: #00fcfe;
         padding: 0;
         margin: 0;
+        font-size: 2.00em;
+        text-align: right;
     }
     
     .person {
         width: 100%;
-        margin-bottom: 1vh;
     }
     
     @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
@@ -388,6 +393,14 @@
                 font-size: 2.4vw;
             }
         }
+        .row ul li {
+            list-style: none;
+            /*font-size: 0.5vw;*/
+        }
+        .row .col {
+            padding-left: 0;
+            padding-right: 0;
+        }
     }
     
     @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: portrait) and (-webkit-min-device-pixel-ratio: 2) {
@@ -396,6 +409,15 @@
             li {
                 font-size: 2.5vw;
             }
+        }
+        .row ul li {
+            list-style: none;
+            /*font-size: 0.5vw;*/
+            color: red;
+        }
+        .row .col {
+            padding-left: 1vw;
+            padding-right: 0;
         }
     }
     /* Desktops and laptops ----------- */
@@ -418,10 +440,14 @@
             padding: 0;
             font-size: 4vw;
         }
-        /*.col-sm-5 {
-            width: 35%;
-            float: left;
-        }*/
+        .row ul li {
+            list-style: none;
+            /*font-size: 0.8vw;*/
+        }
+        .row .col {
+            padding-left: 0vw;
+            padding-right: 0;
+        }
     }
     /* Large screens ----------- */
     
@@ -440,49 +466,28 @@
                 font-size: 3vw;
             }
         }
-        /*.couponsName {
-            padding: 0;
-        }*/
+        .row ul li {
+            list-style: none;
+            font-size: 0.8vw;
+        }
+        .row .col {
+            padding-left: 0vw;
+            padding-right: 0;
+        }
     }
     
     .hide {
         display: none;
     }
     
-    @media all and (orientation:landscape) {
-        /* Styles for Landscape screen */
-        /*.ra-name {
-            display: block;
-            font-size: 1.182em;
-            color: #00fcfe;
-            text-align: left;
-            margin-top: 2%;
-            margin-bottom: 8%;
-        }
-        .ra-desc {
-            display: block;
-            font-size: 0.979em;
-            color: white;
-            text-align: left;
-            margin-bottom: 7%;
-        }*/
-    }
+    @media all and (orientation:landscape) {}
     /* ----------- iPhone 4 and 4S ----------- */
     /* Portrait and Landscape */
     
     @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {}
     /* Portrait */
     
-    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-        /* .col-sm-6 {
-            width: 55%;
-        }
-        .col-sm-3 {
-            width: 20%;
-            padding: 0;
-            margin: 0;
-        }*/
-    }
+    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {}
     /* Landscape */
     
     @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {}
@@ -492,16 +497,7 @@
     @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {}
     /* Portrait */
     
-    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-        /*.col-sm-6 {
-            width: 55%;
-        }
-        .col-sm-3 {
-            width: 20%;
-            padding: 0;
-            margin: 0;
-        }*/
-    }
+    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {}
     /* Landscape */
     
     @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {}
@@ -511,10 +507,20 @@
     @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {}
     /* Portrait */
     
-    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {}
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
+        .row ul li {
+            list-style: none;
+            /*font-size: 2.1vw;*/
+        }
+    }
     /* Landscape */
     
-    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {}
+    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
+        .row ul li {
+            list-style: none;
+            /*font-size: 2.5vw;*/
+        }
+    }
     /* ----------- iPhone 6+ ----------- */
     /* Portrait and Landscape */
     
@@ -524,4 +530,13 @@
     @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {}
     /* Landscape */
     
-    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {}
+    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
+        .row ul li {
+            list-style: none;
+            /*font-size: 2.5vw;*/
+        }
+    }
+    
+    .test-img {
+        width: 10%;
+    }

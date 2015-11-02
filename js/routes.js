@@ -29,7 +29,7 @@ var router = function($stateProvider, $urlRouterProvider) {
 
 
                 getFriendQueue: function(AppConstants, friendQueue, voucherService, $state) {
-                  /*  voucherService.getParticipants(friendQueue.lot).then(function successCallback(rep) {
+                    /*voucherService.getParticipants(friendQueue.lot).then(function successCallback(rep) {
 
                         var indexSplice = -1,
                             rslt = rep.data;
@@ -40,8 +40,6 @@ var router = function($stateProvider, $urlRouterProvider) {
                             }
 
                         });
-
-                            alert(JSON.stringify(rep.data));
 
                         //if has lotteried
                         if (indexSplice > -1) {

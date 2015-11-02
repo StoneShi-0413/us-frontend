@@ -11,11 +11,11 @@ var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, A
             if (rep.result=="OK") {
                 friendQueue.myProfile = rep;
                 $state.go('couponResult');
+            }else{
+                $state.go('notFound');
             }
         }).error(function(data) {
-           
-            alert(JSON.stringify(data));
-           // alert(data.reason);
+           alert(data.reason);
         });*/
         
         //just test

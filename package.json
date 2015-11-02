@@ -1,6 +1,6 @@
 {
     "name": "us-lottery-frontend",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "dependencies": {
         "browserify": "~3.46.0",
         "browser-sync": "^2.7.6",

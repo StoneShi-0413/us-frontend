@@ -25,21 +25,20 @@
             <div class="us-container">
                 <img class="img-responsive" src="./img/friend_luckey.png" />
             </div>
-            <div class="person" ng-repeat='friend in friendQueues'>
-                <div class="row" >
-                    <div class="col-lg-5 col-sm-2">
-                        <img src="{{friend.profileImgUrl}}" class="ra-avatar img-responsive">
-                    </div>
-                    <div class="col-lg-7 col-sm-5">
-                        <div class="ra-name">{{friend.name}}</div>
-                        <div class="ra-desc">炒鸡棒，领券领到手软</div>
-                        <div class="ra-time">{{friend.lot_date | date:'yyyy-MM-dd HH:mm:ss'}}</div>
-                    </div>
-                    <div class="col-lg-5 friend-couponsName">
+            <div class="person container" ng-repeat='friend in friendQueues'>
+                <div class="row">
+                    <thumbnail></thumbnail>
+                    <ul class="col">
+                        <li class="ra-name">{{friend.name}}</li>
+                        <li class="ra-desc">炒鸡棒，领券领到手软</li>
+                        <li class="ra-time">{{friend.lot_date | date:'yyyy-MM-dd HH:mm:ss'}}</li>
+                    </ul>
+                    <div class="friend-couponsName">
                         <p class="couponsName">{{friend.couponsName}}</p>
                     </div>
                 </div>
             </div>
         </article>
     </section>
+
 </div>
