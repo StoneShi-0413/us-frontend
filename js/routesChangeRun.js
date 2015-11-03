@@ -18,7 +18,7 @@ var routerRun = function($rootScope, $state, voucherService, $stateParams, AppCo
             }
         }
     });
-   // voucherService.configWeChat();
+    voucherService.configWeChat();
 
     bootstraps.isAndroid();
 

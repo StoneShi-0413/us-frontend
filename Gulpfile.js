@@ -137,11 +137,17 @@ gulp.task('images', function() {
 
 gulp.task('copy:setup', function() {
 
-    return gulp.src(['scripts/*'])
+    return gulp.src(['scripts/**/*'])
         .pipe(gulp.dest('./components/'));
 });
 
-gulp.task('watch', ['clean', 'copy:setup', 'font', 'browserify', 'styles', 'views', 'images', 'index-page'], function() {
+gulp.task('download', function() {
+
+    return gulp.src('./components/jquery/jquery.min.js')
+        .pipe(gulp.dest('./dist/js/'));
+});
+
+gulp.task('watch', ['clean', 'copy:setup', 'font', 'browserify', 'download', 'styles', 'views', 'images', 'index-page'], function() {
     // Start webserver
     server.listen(serverport);
     // Start live reload
@@ -161,7 +167,7 @@ gulp.task('watch', ['clean', 'copy:setup', 'font', 'browserify', 'styles', 'view
         'views'
     ]);
 
-     gulp.watch(['index.html'], [
+    gulp.watch(['index.html'], [
         'index-page'
     ]);
 
@@ -174,10 +180,9 @@ gulp.task('watch', ['clean', 'copy:setup', 'font', 'browserify', 'styles', 'view
 });
 
 gulp.task('build', function(callback) {
-  runSequence('clean',
-              ['copy:setup', 'browserify', 'styles', 'views', 'images', 'index-page', 'font'],
-              'scp',
-              callback);
+    runSequence('clean', ['copy:setup', 'browserify', 'download', 'styles', 'views', 'images', 'index-page', 'font'],
+        'scp',
+        callback);
 });
 
 gulp.task('default', ['watch']);

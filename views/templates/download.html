@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>coupon</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta name="format-detection" content="telephone=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <link rel="stylesheet" media="screen" type="text/css" href="../../css/style.css" />
+    <script type="text/javascript" src="../../js/jquery.min.js"></script>
+</head>
+
+<body>
+    <div class="wxTip"></div>
+    <script type="text/javascript">
+    $(document).ready(function() {
+
+        function isWeiXin() {
+            var ua = window.navigator.userAgent.toLowerCase();
+            console.log(ua);
+            if (ua.match(/MicroMessenger/i) == 'micromessenger') {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if (isWeiXin()){
+            $('.wxTip').addClass('on');
+            setTimeout(function() {
+                $(".wxTip").removeClass('on');
+            }, 3000);
+        }else{
+            window.location.href = "https://itunes.apple.com/cn/app/us-wo-men/id983129727?l=en&mt=8";
+        }
+    })
+    </script>
+</body>
+
+</html>
