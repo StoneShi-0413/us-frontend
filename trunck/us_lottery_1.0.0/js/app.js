@@ -46,31 +46,33 @@ function fetchData() {
     var initInjector = angular.injector(['ng']);
     var $http = initInjector.get('$http');
     var url = AppConstants.getApiPrefix() + '/auth';
-    /* return $http.get(url).then(function(response) {
-         var authJson = response.data,
-             value = authJson.hasOwnProperty('us_id') ? 'us_id' : (authJson.hasOwnProperty('uid') ? 'uid' : (authJson.hasOwnProperty('redirect') ? 'redirect' : 'redirect')),
-             tempUser = {
-                 userObj: authJson,
-                 role: userRoles[value]
-             };
+    return $http.get(url).then(function(response) {
+        var authJson = response.data,
+            value = authJson.hasOwnProperty('us_id') ? 'us_id' : (authJson.hasOwnProperty('uid') ? 'uid' : (authJson.hasOwnProperty('redirect') ? 'redirect' : 'redirect')),
+            tempUser = {
+                userObj: authJson,
+                role: userRoles[value]
+            };
 
-         if (authJson.hasOwnProperty('redirect')) {
-             window.location.href = authJson.redirect;
-         } else if (!lot) {
-             return;
-         } else {
-             AppConstants.AppUser = tempUser;
-             bootstrapApplication();
-         }
+        if (authJson.hasOwnProperty('redirect')) {
+            window.location.href = authJson.redirect;
+        } else if (!lot) {
+            return;
+        } else {
+            AppConstants.AppUser = tempUser;
+            bootstrapApplication();
+        }
 
-     });*/
-
-    var authJson = {"id": 469,
+    });
+/*
+    var authJson = {
+            "id": 469,
             "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU",
             "name": "stone",
             "iconid": 4066,
             "coupons": "[5]",
-            "lot_date": 1445515636000},
+            "lot_date": 1445515636000
+        },
         value = authJson.hasOwnProperty('us_id') ? 'us_id' : (authJson.hasOwnProperty('uid') ? 'uid' : (authJson.hasOwnProperty('redirect') ? 'redirect' : 'redirect')),
         tempUser = {
             userObj: authJson,
@@ -79,7 +81,7 @@ function fetchData() {
 
 
     AppConstants.AppUser = tempUser;
-    bootstrapApplication();
+    bootstrapApplication();*/
 }
 
 

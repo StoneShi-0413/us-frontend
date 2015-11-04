@@ -329,11 +329,15 @@
     }
     
     .thumbnail {
-        flex: 1 1 30.0000000%;
+        flex: 1 1 22.555555555%;
     }
+    /* .android-img {
+        width: 50%;   
+    }
+    */
     
     .android-img {
-        width: 50%;   
+        width: 9.666666%;
     }
     
     .col,
@@ -539,4 +543,20 @@
     
     .test-img {
         width: 10%;
+    }
+    
+    .wxTip {
+        width: 100%;
+        height: 40%;
+        background: url(../img/wxTip.png) no-repeat;
+        background-size: 100% 100%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        -webkit-transform: translate3d(0, -500px, 0);
+        -webkit-transition: all 0.5s 0s ease-in-out;
+    }
+    
+    .wxTip.on {
+        -webkit-transform: translate3d(0, 0, 0);
     }

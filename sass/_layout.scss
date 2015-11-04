@@ -76,6 +76,11 @@
         padding: 1em 0;
     }
     
+    .us-btn:active {
+        color: #00fcfe;
+        background-color: white;
+    }
+    
     .us-container {
         width: 100%;
         margin: 0 auto;
@@ -322,22 +327,22 @@
             list-style: none;
             margin: 0;
             padding: 0;
-            font-size: 2.4000vw;
         }
         max-width:600px;
-        margin-bottom:2%;
+        margin-bottom:4%;
+    }
+    
+    .row .col {
+        padding-left: 2vw;
+        padding-right: 0;
     }
     
     .thumbnail {
-        flex: 1 1 22.555555555%;
+        flex: 1 1 21.555555555%;
     }
-    /* .android-img {
-        width: 50%;   
-    }
-    */
     
     .android-img {
-        width: 9.666666%;
+        width: 10.6666%;
     }
     
     .col,
@@ -348,46 +353,43 @@
     .ra-name {
         color: #00fcfe;
         text-align: left;
-        height: 33.333333333%;
+        font-size: 2.333333vw;
     }
     
     .ra-desc {
-        /*font-size: 0.979em;*/
         color: white;
         text-align: left;
-        height: 33.333333333%;
+        font-size: 2.5555555vw;
     }
     
     .ra-time {
-        /*font-size: 0.8571em;*/
-        color: #ccc;
+        color: #7B7979;
         text-align: left;
-        height: 33.333333333%;
+        font-size: 2.3333333vw;
     }
     
     .ra-name:after {
         content: "\0000a0";
     }
     
-    @media all and (orientation:landscape) {
-        .col-sm-2 {
-            width: 3.66666666666666666%;
-        }
-        .row ul li {
-            list-style: none;
-        }
-    }
-    
     .couponsName {
         color: #00fcfe;
         padding: 0;
         margin: 0;
-        font-size: 2.00em;
+        font-size: 1.890em;
         text-align: right;
     }
     
     .person {
         width: 100%;
+    }
+    
+    @media only screen and (orientation: landscape) {
+
+    }
+
+    @media only screen and (orientation: landscape) {
+    
     }
     
     @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
@@ -399,7 +401,6 @@
         }
         .row ul li {
             list-style: none;
-            /*font-size: 0.5vw;*/
         }
         .row .col {
             padding-left: 0;
@@ -416,11 +417,9 @@
         }
         .row ul li {
             list-style: none;
-            /*font-size: 0.5vw;*/
-            color: red;
         }
         .row .col {
-            padding-left: 1vw;
+            padding-left: 2vw;
             padding-right: 0;
         }
     }
@@ -446,7 +445,6 @@
         }
         .row ul li {
             list-style: none;
-            /*font-size: 0.8vw;*/
         }
         .row .col {
             padding-left: 0vw;
@@ -471,7 +469,6 @@
             }
         }
         .row ul li {
-            list-style: none;
             font-size: 0.8vw;
         }
         .row .col {
@@ -484,79 +481,37 @@
         display: none;
     }
     
-    @media all and (orientation:landscape) {}
-    /* ----------- iPhone 4 and 4S ----------- */
-    /* Portrait and Landscape */
-    
-    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) {}
-    /* Portrait */
-    
-    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {}
-    /* Landscape */
-    
-    @media only screen and (min-device-width: 320px) and (max-device-width: 480px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {}
-    /* ----------- iPhone 5 and 5S ----------- */
-    /* Portrait and Landscape */
-    
-    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) {}
-    /* Portrait */
-    
-    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {}
-    /* Landscape */
-    
-    @media only screen and (min-device-width: 320px) and (max-device-width: 568px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {}
-    /* ----------- iPhone 6 ----------- */
-    /* Portrait and Landscape */
-    
-    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) {}
-    /* Portrait */
-    
-    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: portrait) {
-        .row ul li {
-            list-style: none;
-            /*font-size: 2.1vw;*/
-        }
-    }
-    /* Landscape */
-    
-    @media only screen and (min-device-width: 375px) and (max-device-width: 667px) and (-webkit-min-device-pixel-ratio: 2) and (orientation: landscape) {
-        .row ul li {
-            list-style: none;
-            /*font-size: 2.5vw;*/
-        }
-    }
-    /* ----------- iPhone 6+ ----------- */
-    /* Portrait and Landscape */
-    
-    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) {}
-    /* Portrait */
-    
-    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: portrait) {}
-    /* Landscape */
-    
-    @media only screen and (min-device-width: 414px) and (max-device-width: 736px) and (-webkit-min-device-pixel-ratio: 3) and (orientation: landscape) {
-        .row ul li {
-            list-style: none;
-            /*font-size: 2.5vw;*/
-        }
-    }
-    
     .test-img {
         width: 10%;
     }
     
-    .wxTip {
-        width: 100%;
-        height: 40%;
-        background: url(../img/wxTip.png) no-repeat;
-        background-size: 100% 100%;
+    .wxDownloadTip {
         position: fixed;
         top: 0;
-        left: 0;
-        -webkit-transform: translate3d(0, -500px, 0);
+        width: 100%;
+        z-index: 111111111111111111;
+        -webkit-transform: translate3d(0, -100%, 0);
         -webkit-transition: all 0.5s 0s ease-in-out;
     }
     
-    .wxTip.on {
+    .wxDownloadTip.on {
         -webkit-transform: translate3d(0, 0, 0);
+    }
+    
+    .wxShareTip {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 111111111111111111;
+        -webkit-transform: translate3d(0, -100%, 0);
+        -webkit-transition: all 0.5s 0s ease-in-out;
+    }
+    
+    .wxShareTip.on {
+        -webkit-transform: translate3d(0, 0, 0);
+    }
+    
+    .responsive-image {
+        width: 100%;
+        background-size: 100% 100%;
     }

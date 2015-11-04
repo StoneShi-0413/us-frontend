@@ -18,8 +18,35 @@ var pickUpSamePackageName = function(arr, AppConstants) {
     return voucherName;
 };
 
+var getArrayItems = function(num, AppConstants) {
+    //新建一个数组,将传入的数组复制过来,用于运算,而不要直接操作传入的数组;
+    var arr = AppConstants.sentences,
+        temp_array = new Array();
+    for (var index in arr) {
+        temp_array.push(arr[index]);
+    }
+    //取出的数值项,保存在此数组
+    var return_array = new Array();
+    for (var i = 0; i < num; i++) {
+        //判断如果数组还有可以取出的元素,以防下标越界
+        if (temp_array.length > 0) {
+            //在数组中产生一个随机索引
+            var arrIndex = Math.floor(Math.random() * temp_array.length);
+            //将此随机索引的对应的数组元素值复制出来
+            return_array[i] = temp_array[arrIndex];
+            //然后删掉此索引的数组元素,这时候temp_array变为新的数组
+            temp_array.splice(arrIndex, 1);
+        } else {
+            //数组中数据项取完后,退出循环,比如数组本来只有10项,但要求取出20项.
+            break;
+        }
+    }
+    return return_array;
+};
+
+
 var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, voucherService, AppConstants) {
-    /*
+    
         //just test
         var rep = {
                 "id": 469,
@@ -62,21 +89,23 @@ var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, vouc
 
         friendQueue.queue = rslt;
         friendQueue.myProfile = rep;
-*/
-    voucherService.shareFriend();
+
+
 
     var myProfile = $window.sessionStorage.getItem('myProfile');
     var queue = $window.sessionStorage.getItem('queue');
     var lotteryObject,
         queueObject;
-    if(!myProfile || !queue){
+    if (!myProfile || !queue) {
         lotteryObject = friendQueue.myProfile;
         queueObject = friendQueue.queue;
-    }else{
+    } else {
         lotteryObject = JSON.parse(myProfile);
         queueObject = JSON.parse(queue);
     }
     /**   test end   **/
+    ;
+    var sentences = getArrayItems(queueObject.length, AppConstants);
     lotteryObject.couponsName = pickUpSamePackageName(lotteryObject.coupons, AppConstants);
     queueObject = angular.forEach(queueObject, function(item, index) {
         item.couponsName = pickUpSamePackageName(item.coupons, AppConstants);
@@ -85,18 +114,13 @@ var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, vouc
         } else {
             item.profileImgUrl = AppConstants.protocol + AppConstants.applicationIp + '/usmvn/image/' + item.iconid;
         }
-
+        item.sentence = sentences[index];
         return item;
     });
 
 
     $scope.lotteryObj = lotteryObject;
     $scope.friendQueues = queueObject;
-
-
-    $scope.shareFriend = function() {
-        voucherService.test();
-    };
 
     $scope.isShow = function(voucher) {
         if ($scope.lotteryObj.hasOwnProperty('code')) {
@@ -107,8 +131,19 @@ var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, vouc
 
     };
 
-    $scope.wxTip = function($event) {
-        window.location.href='./views/templates/download.html';
+    $scope.wxDownloadTip = function(event) {
+        event.preventDefault();
+        window.location.href = './views/templates/download.html';
+    };
+
+    $scope.wxShareTip = function(event) {
+        event.preventDefault();
+        console.log(event);
+        $scope.orientation = AppConstants.orientation;
+        $('.wxShareTip').addClass('on');
+        setTimeout(function() {
+            $(".wxShareTip").removeClass('on');
+        }, 3000);
     };
 
 };

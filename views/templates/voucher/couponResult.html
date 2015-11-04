@@ -1,4 +1,9 @@
 <div class="container text-center">
+
+    <div class="wxShareTip"   >
+        <img src='./img/wxShareLandscapeTip.png'class="responsive-image" ng-if="orientation==0"/>
+        <img src='./img/wxSharePortraitTip.png' class="responsive-image" ng-if="orientation==1"/>
+    </div>
     <div class="us-container text1">
         <div class="counter">
             <div style="text-align:center;" class="money dynamic-h1">
@@ -12,14 +17,13 @@
         </div>
     </div>
     <div class="us-container text1">
-        <img class="img-responsive" src="./img/wechat.jpg" />
-    </div>
-
-    <div class="us-container text1">
-        <button class="btn btn-sm us-btn" type="button" ng-click="openApp()"><span class="dynamic-h2">分享给小伙伴</span></button>
+        <img class="img-responsive" ng-if="lotteryObj.code" src="./img/wechat.jpg" />
     </div>
     <div class="us-container text1">
-        <button class="btn btn-sm us-btn" type="button" ng-click="wxTip($event)"><span class="dynamic-h2">打开US立即购票</span></button>
+        <button class="btn btn-sm us-btn" type="button" ng-click="wxShareTip($event)"><span class="dynamic-h2">分享给小伙伴</span></button>
+    </div>
+    <div class="us-container text1">
+        <button class="btn btn-sm us-btn" type="button" ng-click="wxDownloadTip($event)"><span class="dynamic-h2">打开US立即购票</span></button>
     </div>
     <div class="us-container text1">
         <img class="img-responsive" src="./img/text.jpg" />
@@ -33,9 +37,10 @@
                 <div class="row">
                     <thumbnail></thumbnail>
                     <ul class="col">
+
                         <li class="ra-name">{{friend.name}}</li>
-                        <li class="ra-desc">炒鸡棒，领券领到手软</li>
-                        <li class="ra-time">{{friend.lot_date | date:'yyyy-MM-dd HH:mm:ss'}}</li>
+                        <li class="ra-desc">{{friend.sentence}}</li>
+                        <li class="ra-time">{{friend.lot_date | date:'yyyy/MM/dd HH:mm:ss'}}</li>
                     </ul>
                     <div class="friend-couponsName">
                         <p class="couponsName">{{friend.couponsName}}</p>
@@ -44,5 +49,4 @@
             </div>
         </article>
     </section>
-
 </div>

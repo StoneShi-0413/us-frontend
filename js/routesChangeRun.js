@@ -18,9 +18,11 @@ var routerRun = function($rootScope, $state, voucherService, $stateParams, AppCo
             }
         }
     });
-    voucherService.configWeChat();
+    
+   /* voucherService.configWeChat();
+    voucherService.shareFriend();*/
 
-    bootstraps.isAndroid();
+    bootstraps.appStart();
 
 };
 

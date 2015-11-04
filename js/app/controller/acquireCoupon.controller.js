@@ -3,9 +3,9 @@
 var controllersModule = require('./controllers');
 var controllerName = 'AcquireCouponController';
 var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, AppConstants, friendQueue, $window) {
-    $scope.couponResult = function($event) {
-        $event.preventDefault()
-        var lotParam = AppConstants.queryString().lot;
+    $scope.couponResult = function(event) {
+        event.preventDefault()
+        /*var lotParam = AppConstants.queryString().lot;
         voucherService.lottery(lotParam).success(function(response) {
             var rep = response;
             if (rep.result == "OK") {
@@ -18,7 +18,7 @@ var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, A
         }).error(function(data) {
             alert(data.reason);
         });
-        /*
+        */
         //just test
         var rep = {
             "id": 469,
@@ -29,10 +29,10 @@ var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, A
             "lot_date": 1445515636000
         };
         friendQueue.myProfile = rep;
-        $state.go('couponResult');*/
+        $state.go('couponResult');
     };
 
-    $scope.wxTip = function($event) {
+    $scope.wxDownloadTip = function($event) {
         window.location.href = './views/templates/download.html';
     };
 

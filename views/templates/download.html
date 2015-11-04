@@ -11,8 +11,10 @@
     <script type="text/javascript" src="../../js/jquery.min.js"></script>
 </head>
 
-<body>
-    <div class="wxTip"></div>
+<body style="background-image:url('../../img/download.jpg');background-repeat: no-repeat;">
+    <div class="wxDownloadTip">
+        <img src='../../img/wxDownloadTip.png' class="responsive-image" />
+    </div>
     <script type="text/javascript">
     $(document).ready(function() {
 
@@ -25,13 +27,14 @@
                 return false;
             }
         }
-        if (isWeiXin()){
-            $('.wxTip').addClass('on');
+
+        if (isWeiXin()) {
+            $('.wxDownloadTip').addClass('on');
             setTimeout(function() {
-                $(".wxTip").removeClass('on');
+                $(".wxDownloadTip").removeClass('on');
             }, 3000);
-        }else{
-            window.location.href = "https://itunes.apple.com/cn/app/us-wo-men/id983129727?l=en&mt=8";
+        } else {
+            window.location.href = "http://itunes.apple.com/us/app/id983129727";
         }
     })
     </script>
