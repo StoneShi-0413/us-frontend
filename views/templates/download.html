@@ -24,8 +24,8 @@
         width: 100%;
         position: static
     }
-
-    .download{
+    
+    .download {
         width: auto;
     }
     </style>
@@ -38,14 +38,12 @@
         </div>
     </div>
     <div class="wxDownloadTip">
-        <img src='../../img/wxDownloadTip.png' class="responsive-image" />
+        <img class="responsive-image" />
     </div>
     <script type="text/javascript">
     $(document).ready(function() {
-
+        var ua = window.navigator.userAgent.toLowerCase();
         function isWeiXin() {
-            var ua = window.navigator.userAgent.toLowerCase();
-            console.log(ua);
             if (ua.match(/MicroMessenger/i) == 'micromessenger') {
                 return true;
             } else {
@@ -53,16 +51,30 @@
             }
         }
 
-        if (isWeiXin()) {
+        function isIos() {
+            if ((ua.indexOf('ipad') !== -1) || (ua.indexOf('iphone') !== -1)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        if (isIos() && isWeiXin()) {
+            $('.responsive-image').attr('src', '../../img/wxIosDownloadTip.png');
             $('.wxDownloadTip').addClass('on');
-        }else{
+        } else if (isIos() && (!isWeiXin())) {
             window.location.href = "http://itunes.apple.com/us/app/id983129727";
+        } else if (isWeiXin() && (!isIos())) {
+            $('.responsive-image').attr('src', '../../img/wxAndroidDownloadTip.png');
+            $('.wxDownloadTip').addClass('on');
+        } else if ((!isWeiXin()) && (!isIos())){
+            $('.responsive-image').attr('src', '../../img/androidExpect.png');
+            $('.wxDownloadTip').addClass('on');
         }
 
 
 
         $(window).resize(function() {
-            var winheight = $(window).height()*0.7 + 'px';
+            var winheight = $(window).height() * 0.7 + 'px';
             $('.download').height(winheight);
         });
     });
