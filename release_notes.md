@@ -1,3 +1,7 @@
+#2015-11-2 v1.0.4
+	
+	add friend queue desc and ,revise code for indicate
+
 #2015-11-2 v1.0.3
 	
 	delete the trunck folder , resize the friend queue layout,add indicate for sharing and add fix the download layout.
