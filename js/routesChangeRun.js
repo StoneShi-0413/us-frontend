@@ -19,8 +19,8 @@ var routerRun = function($rootScope, $state, voucherService, $stateParams, AppCo
         }
     });
     
-   /* voucherService.configWeChat();
-    voucherService.shareFriend();*/
+    voucherService.configWeChat();
+    voucherService.shareFriend();
 
     bootstraps.appStart();
 

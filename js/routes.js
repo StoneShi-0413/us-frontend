@@ -29,7 +29,7 @@ var router = function($stateProvider, $urlRouterProvider) {
 
 
                 getFriendQueue: function(AppConstants, friendQueue, voucherService, $state, $window) {
-                    /*voucherService.getParticipants(friendQueue.lot).then(function successCallback(rep) {
+                    voucherService.getParticipants(friendQueue.lot).then(function successCallback(rep) {
                         $window.sessionStorage.clear();
                         var indexSplice = -1,
                             rslt = rep.data;
@@ -59,9 +59,9 @@ var router = function($stateProvider, $urlRouterProvider) {
                         if (messageObj.reason === '无效的lot值') {
                             $state.go('notFound');
                         }
-                    });*/
+                    });
 
-            
+            /*
 
                     //just test
                     var indexSplice = -1,
@@ -119,7 +119,7 @@ var router = function($stateProvider, $urlRouterProvider) {
                     } else {
                         friendQueue.queue = rslt;
                     }
-
+*/
 
                 }
             }

@@ -46,7 +46,7 @@ var getArrayItems = function(num, AppConstants) {
 
 
 var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, voucherService, AppConstants) {
-    
+    /*
         //just test
         var rep = {
                 "id": 469,
@@ -89,7 +89,7 @@ var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, vouc
 
         friendQueue.queue = rslt;
         friendQueue.myProfile = rep;
-
+*/
 
 
     var myProfile = $window.sessionStorage.getItem('myProfile');
