@@ -9,9 +9,34 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <link rel="stylesheet" media="screen" type="text/css" href="../../css/style.css" />
     <script type="text/javascript" src="../../js/jquery.min.js"></script>
+    <style type="text/css">
+    .download-table {
+        width: 100%;
+        height: 100%;
+        display: table;
+        position: absolute;
+    }
+    
+    .download-cell {
+        display: table-cell;
+        vertical-align: middle;
+        text-align: center;
+        width: 100%;
+        position: static
+    }
+
+    .download{
+        width: auto;
+    }
+    </style>
 </head>
 
-<body style="background-image:url('../../img/download.jpg');background-repeat: no-repeat;">
+<body>
+    <div class="download-table">
+        <div class="download-cell">
+            <img class="download" src="../../img/download.jpg">
+        </div>
+    </div>
     <div class="wxDownloadTip">
         <img src='../../img/wxDownloadTip.png' class="responsive-image" />
     </div>
@@ -30,14 +55,16 @@
 
         if (isWeiXin()) {
             $('.wxDownloadTip').addClass('on');
-            setTimeout(function() {
-                $(".wxDownloadTip").removeClass('on');
-            }, 3000);
-        } else {
+        }else{
             window.location.href = "http://itunes.apple.com/us/app/id983129727";
         }
-    })
+
+
+
+        $(window).resize(function() {
+            var winheight = $(window).height()*0.7 + 'px';
+            $('.download').height(winheight);
+        });
+    });
     </script>
 </body>
-
-</html>

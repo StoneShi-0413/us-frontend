@@ -384,13 +384,9 @@
         width: 100%;
     }
     
-    @media only screen and (orientation: landscape) {
-
-    }
-
-    @media only screen and (orientation: landscape) {
+    @media only screen and (orientation: landscape) {}
     
-    }
+    @media only screen and (orientation: landscape) {}
     
     @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) and (orientation: landscape) and (-webkit-min-device-pixel-ratio: 2) {
         /* Styles */
@@ -514,4 +510,13 @@
     .responsive-image {
         width: 100%;
         background-size: 100% 100%;
+    }
+    
+    
+    /**download image*/
+   .download-img{
+     background: url(../../img/download.jpg) 50% 0% no-repeat #000;
+   }
+    
+    @media only screen and (orientation: landscape) {
     }
