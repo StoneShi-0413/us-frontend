@@ -28,6 +28,8 @@ var AppConstants = require('./constants'),
     lot = AppConstants.queryString().lot,
     app = angular.module('app', requires);
 
+
+/**start app **/
 function bootstrapApplication() {
     angular.element(document).ready(function() {
         app.constant('AppConstants', AppConstants);
@@ -42,10 +44,12 @@ function bootstrapApplication() {
     });
 }
 
+/**get the auth from backend **/
 function fetchData() {
     var initInjector = angular.injector(['ng']);
     var $http = initInjector.get('$http');
     var url = AppConstants.getApiPrefix() + '/auth';
+
     return $http.get(url).then(function(response) {
         var authJson = response.data,
             value = authJson.hasOwnProperty('us_id') ? 'us_id' : (authJson.hasOwnProperty('uid') ? 'uid' : (authJson.hasOwnProperty('redirect') ? 'redirect' : 'redirect')),
@@ -64,24 +68,6 @@ function fetchData() {
         }
 
     });
-/*
-    var authJson = {
-            "id": 469,
-            "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU",
-            "name": "stone",
-            "iconid": 4066,
-            "coupons": "[5]",
-            "lot_date": 1445515636000
-        },
-        value = authJson.hasOwnProperty('us_id') ? 'us_id' : (authJson.hasOwnProperty('uid') ? 'uid' : (authJson.hasOwnProperty('redirect') ? 'redirect' : 'redirect')),
-        tempUser = {
-            userObj: authJson,
-            role: userRoles[value]
-        };
-
-
-    AppConstants.AppUser = tempUser;
-    bootstrapApplication();*/
 }
 
 

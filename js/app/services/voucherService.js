@@ -67,7 +67,7 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
 
 
     service.shareFriend = function() {
-        var wxImgLink = $window.location.href.split('index.html')[0] + 'img/' + AppConstants.redPackObj.img,
+        var wxImgLink = $window.location.href.split('?lot=')[0] + 'img/' + AppConstants.redPackObj.img,
             wxLink = $window.location.href.split('#')[0];
         wx.ready(function() {
             wx.onMenuShareAppMessage({

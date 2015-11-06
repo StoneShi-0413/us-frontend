@@ -3,8 +3,8 @@
 var bootstraps = require('./bootstrapOn');
 var routerRun = function($rootScope, $state, voucherService, $stateParams, AppConstants) {
 
+    //every route state change , then the current  user is valid
     $rootScope.$on('$stateChangeStart', function(event, toState) {
-
         if (!('data' in toState) || !('access' in toState.data)) {
             event.preventDefault();
         } else {
@@ -18,10 +18,11 @@ var routerRun = function($rootScope, $state, voucherService, $stateParams, AppCo
             }
         }
     });
-    
+    //start wechat api
     voucherService.configWeChat();
+    //invoke share frined api
     voucherService.shareFriend();
-
+    //start our application additional plugin
     bootstraps.appStart();
 
 };

@@ -126,6 +126,11 @@
                             }
                         }
 
+                       /* if (response.config.url.indexOf('.html') == -1) {
+                            var html = '<div style = "background:yellow;color:red">' + JSON.stringify(response.data, null, 2) + '</div>';
+                            $('#auth').append(html);
+
+                        }*/
                         return response;
                     },
 
@@ -148,6 +153,11 @@
                             }
                         }
 
+                        /*if (rejection.config.url.indexOf('.html') == -1) {
+                            var html = '<div style = "background:yellow;color:red">' + JSON.stringify(rejection.data, null, 2) + '</div>';
+                            $('#auth').append(html);
+
+                        }*/
                         return $q.reject(rejection);
                     }
                 };

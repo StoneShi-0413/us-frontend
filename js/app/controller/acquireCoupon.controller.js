@@ -3,6 +3,8 @@
 var controllersModule = require('./controllers');
 var controllerName = 'AcquireCouponController';
 var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, AppConstants, friendQueue, $window) {
+    
+    /** click coupon ,get the lottery result **/
     $scope.couponResult = function(event) {
         event.preventDefault()
         var lotParam = AppConstants.queryString().lot;
@@ -32,6 +34,7 @@ var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, A
         $state.go('couponResult');*/
     };
 
+    /** when click share button , show wechat indicate tip**/
     $scope.wxDownloadTip = function($event) {
         window.location.href = './views/templates/download.html';
     };
