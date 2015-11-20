@@ -3,7 +3,7 @@
 var controllersModule = require('./controllers');
 var controllerName = 'AcquireCouponController';
 var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, AppConstants, friendQueue, $window) {
-    
+
     /** click coupon ,get the lottery result **/
     $scope.couponResult = function(event) {
         event.preventDefault()
@@ -11,6 +11,8 @@ var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, A
         voucherService.lottery(lotParam).success(function(response) {
             var rep = response;
             if (rep.result == "OK") {
+                
+
                 friendQueue.myProfile = rep;
                 $window.sessionStorage.setItem('myProfile', JSON.stringify(friendQueue.myProfile));
                 $state.go('couponResult');

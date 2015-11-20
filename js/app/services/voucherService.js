@@ -66,27 +66,41 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
     };
 
 
-    service.shareFriend = function() {
-        var wxImgLink = $window.location.href.split('?lot=')[0] + 'img/' + AppConstants.redPackObj.img,
+    service.shareFriend = function(redPackObj) {
+        var wxImgLink = '',
             wxLink = $window.location.href.split('#')[0];
+        if(redPackObj !==null){
+            wxImgLink = 'http://m.us-app.com/usmvn/image/' + redPackObj.image_id;
+            redPackObj = {title:redPackObj.title,desc:redPackObj.body,wxLink:wxLink,wxImgLink:wxImgLink};
+        }else{
+            wxImgLink = $window.location.href.split('?lot=')[0] + 'img/' + AppConstants.redPackObj.img;
+            redPackObj = {title:AppConstants.redPackObj.title,desc:AppConstants.redPackObj.desc,wxLink:wxLink,wxImgLink:wxImgLink};
+        }
+
         wx.ready(function() {
             wx.onMenuShareAppMessage({
-                title: AppConstants.redPackObj.title, // 分享标题
-                desc: AppConstants.redPackObj.desc, // 分享描述
-                link: wxLink, // 分享链接
-                imgUrl: wxImgLink, // 分享图标
+                title: redPackObj.title, // 分享标题
+                desc: redPackObj.desc, // 分享描述
+                link: redPackObj.wxLink, // 分享链接
+                imgUrl: redPackObj.wxImgLink, // 分享图标
                 success: function() {},
                 cancel: function() {}
             });
 
             wx.onMenuShareTimeline({
-                title: AppConstants.redPackObj.title, // 分享标题
-                link: wxLink, // 分享链接
-                imgUrl: wxImgLink, // 分享图标
+                title: redPackObj.title, // 分享标题
+                link: redPackObj.wxLink, // 分享链接
+                imgUrl: redPackObj.wxImgLink, // 分享图标
                 success: function() {},
                 cancel: function() {}
             });
         });
+    };
+
+    service.getLotSource = function() {
+        var url = 'http://m.us-app.com/usmvn/coupon/info/:lot';
+        url = url.replace(':lot', AppConstants.queryString().lot);
+        return promise(url, 'GET');
     };
 
     service.test = function() {};

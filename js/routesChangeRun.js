@@ -20,8 +20,6 @@ var routerRun = function($rootScope, $state, voucherService, $stateParams, AppCo
     });
     //start wechat api
     voucherService.configWeChat();
-    //invoke share frined api
-    voucherService.shareFriend();
     //start our application additional plugin
     bootstraps.appStart();
 
