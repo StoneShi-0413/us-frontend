@@ -43,7 +43,6 @@ var router = function($stateProvider, $urlRouterProvider) {
 
                         voucherService.getLotSource().then(function(response) {
                             //invoke share frined api
-                            alert(JSON.stringify(response.data));
                             voucherService.shareFriend(response.data);
                             if (indexSplice > -1) {
                                 var myRslt = rslt[indexSplice];
