@@ -68,8 +68,8 @@ function fetchData() {
         }
 
     });
-
-/*    var authJson = {
+/*
+    var authJson = {
             "id": 469,
             "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU",
             "name": "stone",

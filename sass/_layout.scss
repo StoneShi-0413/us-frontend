@@ -176,7 +176,8 @@
     .text1 {
         margin-top: 4%;
     }
-    .text-img-margin{
+    
+    .text-img-margin {
         margin-top: 10%;
     }
     
@@ -221,7 +222,6 @@
         font-size: 4.3vw;
         display: inline-block;
         color: var(fontRed);
-
     }
     
     .dynamic-h3 {
@@ -522,7 +522,17 @@
     }
     
     @media only screen and (orientation: landscape) {}
-
-    .img-friend-luckey-margin{
+    
+    .img-friend-luckey-margin {
         margin: 0 auto 6% auto;
+    }
+    
+    .download-acquire {
+        position: absolute;
+        z-index: 1000000;
+        top: 22%;
+        max-width: 31%;
+        text-align: right;
+        right: 4%;
+        height: 60%;
     }

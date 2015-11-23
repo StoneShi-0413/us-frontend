@@ -6,8 +6,12 @@ var controllerName = 'CouponResultController';
 
 /**pick up voucher name  by the coupons**/
 var pickUpSamePackageName = function(arr, AppConstants) {
-    var vouchers = AppConstants.vouchers,
-        arr1 = eval(arr),
+    var vouchers = window.sessionStorage.getItem('vouchers');
+    if(!vouchers){
+        vouchers = AppConstants.vouchers;
+    }
+    vouchers = JSON.parse(vouchers);
+    var arr1 = eval(arr),
         voucherName = '';
     if (arr1.length > 1) {
         voucherName = '大礼包';
@@ -52,8 +56,8 @@ var getArrayItems = function(num, AppConstants) {
 
 
 var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, voucherService, AppConstants) {
-/*
 
+/*
     //just test
     var rep = {
             "id": 469,
@@ -96,8 +100,8 @@ var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, vouc
 
     friendQueue.queue = rslt;
     friendQueue.myProfile = rep;
-
 */
+
     //get my profile info from sessionStorage when click download and then click come back button
     var myProfile = $window.sessionStorage.getItem('myProfile');
 

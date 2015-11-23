@@ -13,7 +13,7 @@ var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, A
             if (rep.result == "OK") {
                 friendQueue.myProfile = rep;
                 $window.sessionStorage.setItem('myProfile', JSON.stringify(friendQueue.myProfile));
-                
+
                 var couponsInfo = [];
                 rep.coupons = eval(rep.coupons);
                 if (rep.coupons.length == 1) {
@@ -23,10 +23,12 @@ var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, A
                     angular.forEach(repCouponsInfo, function(item, index) {
                         var coupons = {
                             'group': '[' + item.data.id + ']',
-                            'name': item.data.percent === 0 ? item.data.discount / 100 + '.00元' : item.data.percent/10 + '折'
+                            'name': item.data.percent === 0 ? item.data.discount / 100 + '.00元' : item.data.percent / 10 + '折'
                         };
                         AppConstants.vouchers.push(coupons);
                     });
+
+                    $window.sessionStorage.setItem('vouchers', JSON.stringify(AppConstants.vouchers));
                     $state.go('couponResult');
                 });
             } else {
