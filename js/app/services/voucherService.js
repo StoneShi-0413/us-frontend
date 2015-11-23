@@ -69,12 +69,22 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
     service.shareFriend = function(redPackObj) {
         var wxImgLink = '',
             wxLink = $window.location.href.split('#')[0];
-        if(redPackObj !==null){
+        if (redPackObj !== null) {
             wxImgLink = 'http://m.us-app.com/usmvn/image/' + redPackObj.image_id;
-            redPackObj = {title:redPackObj.title,desc:redPackObj.body,wxLink:wxLink,wxImgLink:wxImgLink};
-        }else{
+            redPackObj = {
+                title: redPackObj.title,
+                desc: redPackObj.body,
+                wxLink: wxLink,
+                wxImgLink: wxImgLink
+            };
+        } else {
             wxImgLink = $window.location.href.split('?lot=')[0] + 'img/' + AppConstants.redPackObj.img;
-            redPackObj = {title:AppConstants.redPackObj.title,desc:AppConstants.redPackObj.desc,wxLink:wxLink,wxImgLink:wxImgLink};
+            redPackObj = {
+                title: AppConstants.redPackObj.title,
+                desc: AppConstants.redPackObj.desc,
+                wxLink: wxLink,
+                wxImgLink: wxImgLink
+            };
         }
 
         wx.ready(function() {
@@ -103,7 +113,20 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
         return promise(url, 'GET');
     };
 
-    service.test = function() {};
+    service.setCouponInfo = function(couponIds) {
+
+        var promises = [];
+
+        angular.forEach(couponIds, function(couponId) {
+
+            var url = 'http://m.us-app.com/usmvn/coupon/:couponId';
+            url = url.replace(':couponId', couponId);
+
+            promises.push(promise(url, 'GET'));
+
+        });
+        return $q.all(promises);
+    };
 
     return service;
 };

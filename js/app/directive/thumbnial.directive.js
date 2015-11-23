@@ -12,10 +12,8 @@ var ThumbnailDirective = function() {
             var isAndroidDevice = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
             if (isAndroidDevice) {
                 if ($('.col-sm-2')) {
-                    //elem.find('img').addClass('android-img');
                     elem.removeClass('thumbnail');
                     elem.addClass('android-img');
-                    //$('.row').css('margin-left','-2%');
                 }
             }
         }

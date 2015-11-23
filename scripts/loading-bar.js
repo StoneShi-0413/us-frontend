@@ -125,8 +125,8 @@
                                 cfpLoadingBar.set(reqsCompleted / reqsTotal);
                             }
                         }
-
-                       /* if (response.config.url.indexOf('.html') == -1) {
+/*
+                        if (response.config.url.indexOf('.html') == -1) {
                             var html = '<div style = "background:yellow;color:red">' + JSON.stringify(response.data, null, 2) + '</div>';
                             $('#auth').append(html);
 
@@ -149,11 +149,11 @@
                             if (reqsCompleted >= reqsTotal) {
                                 setComplete();
                             } else {
-                                cfpLoadingBar.set(reqsCompleted / reqsTotal);
+                       /**/         cfpLoadingBar.set(reqsCompleted / reqsTotal);
                             }
                         }
-
-                        /*if (rejection.config.url.indexOf('.html') == -1) {
+/*
+                        if (rejection.config.url.indexOf('.html') == -1) {
                             var html = '<div style = "background:yellow;color:red">' + JSON.stringify(rejection.data, null, 2) + '</div>';
                             $('#auth').append(html);
 

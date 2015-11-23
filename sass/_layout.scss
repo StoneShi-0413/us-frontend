@@ -66,14 +66,14 @@
     
     .us-btn {
         background-color: #00fcfe;
-        font-family: 'Microsoft YaHei';
+        font-family: inherit;
         border-radius: 10px;
         display: block;
         margin: 0 auto;
         font-weight: bold;
         width: 50%;
         border: 0px;
-        padding: 1em 0;
+        padding: 0.8em 0;
     }
     
     .us-btn:active {
@@ -174,7 +174,10 @@
     }
     
     .text1 {
-        margin-top: 3%;
+        margin-top: 4%;
+    }
+    .text-img-margin{
+        margin-top: 10%;
     }
     
     img {
@@ -215,9 +218,10 @@
     }
     
     .dynamic-h2 {
-        font-size: 5.3vw;
+        font-size: 4.3vw;
         display: inline-block;
         color: var(fontRed);
+
     }
     
     .dynamic-h3 {
@@ -338,11 +342,11 @@
     }
     
     .thumbnail {
-        flex: 1 1 21.555555555%;
+        flex: 1 1 32.555555555%;
     }
     
     .android-img {
-        width: 10.6666%;
+        width: 12.6666%;
     }
     
     .col,
@@ -353,13 +357,13 @@
     .ra-name {
         color: #00fcfe;
         text-align: left;
-        font-size: 2.333333vw;
+        font-size: 3.7777777vw;
     }
     
     .ra-desc {
         color: white;
         text-align: left;
-        font-size: 2.5555555vw;
+        font-size: 2.888888vw;
     }
     
     .ra-time {
@@ -376,7 +380,7 @@
         color: #00fcfe;
         padding: 0;
         margin: 0;
-        font-size: 1.890em;
+        font-size: 1.490em;
         text-align: right;
     }
     
@@ -511,12 +515,14 @@
         width: 100%;
         background-size: 100% 100%;
     }
-    
-    
     /**download image*/
-   .download-img{
-     background: url(../../img/download.jpg) 50% 0% no-repeat #000;
-   }
     
-    @media only screen and (orientation: landscape) {
+    .download-img {
+        background: url(../../img/download.jpg) 50% 0% no-repeat #000;
+    }
+    
+    @media only screen and (orientation: landscape) {}
+
+    .img-friend-luckey-margin{
+        margin: 0 auto 6% auto;
     }

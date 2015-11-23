@@ -9,12 +9,17 @@ var pickUpSamePackageName = function(arr, AppConstants) {
     var vouchers = AppConstants.vouchers,
         arr1 = eval(arr),
         voucherName = '';
-    angular.forEach(vouchers, function(item, index) {
-        var arr2 = eval(item.group);
-        if ($(arr1).not(arr2).length === 0 && $(arr2).not(arr1).length === 0) {
-            voucherName = vouchers[index].name;
-        }
-    });
+    if (arr1.length > 1) {
+        voucherName = '大礼包';
+    } else {
+        angular.forEach(vouchers, function(item, index) {
+            var arr2 = eval(item.group);
+            if (arr2[0] === arr1[0]) {
+                voucherName = vouchers[index].name;
+            }
+        });
+
+    }
     return voucherName;
 };
 
@@ -47,8 +52,52 @@ var getArrayItems = function(num, AppConstants) {
 
 
 var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, voucherService, AppConstants) {
+/*
+
+    //just test
+    var rep = {
+            "id": 469,
+            "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU",
+            "name": "stone",
+            "iconid": 4066,
+            "coupons": "[5]",
+            "lot_date": 1445515636000
+        },
 
 
+        rslt = [{
+            "id": 469,
+            "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU",
+            "name": "stone",
+            "iconid": 4066,
+            "coupons": "[5]",
+            "lot_date": 1445515636000
+        }, {
+            "id": 481,
+            "us_id": "o-AMtt0STmpVmQTQnJtojmwJ84UY",
+            "name": "StoneShi",
+            "iconid": 4166,
+            "coupons": "[6]",
+            "lot_date": 1445515636000
+        }, {
+            "id": 487,
+            "us_id": "o-AMtt5Of53HcHvHpndw0n-t-4Dg",
+            "name": "@左眼睛 ",
+            "iconid": 133,
+            "coupons": "[6]",
+            "lot_date": 1445515636000
+        }, {
+            "id": 493,
+            "us_id": "oDmUQs32j4UUlVs07T3CZsKqO680",
+            "code": "4719",
+            "coupons": "[7]",
+            "lot_date": 1445515636000
+        }];
+
+    friendQueue.queue = rslt;
+    friendQueue.myProfile = rep;
+
+*/
     //get my profile info from sessionStorage when click download and then click come back button
     var myProfile = $window.sessionStorage.getItem('myProfile');
 
@@ -63,6 +112,7 @@ var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, vouc
         lotteryObject = JSON.parse(myProfile);
         queueObject = JSON.parse(queue);
     }
+
     //get the array sentence from constants file by random
     var sentences = getArrayItems(queueObject.length, AppConstants);
     //define the coupons name by above method

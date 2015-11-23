@@ -68,6 +68,24 @@ function fetchData() {
         }
 
     });
+
+/*    var authJson = {
+            "id": 469,
+            "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU",
+            "name": "stone",
+            "iconid": 4066,
+            "coupons": "[5]",
+            "lot_date": 1445515636000
+        },
+        value = authJson.hasOwnProperty('us_id') ? 'us_id' : (authJson.hasOwnProperty('uid') ? 'uid' : (authJson.hasOwnProperty('redirect') ? 'redirect' : 'redirect')),
+        tempUser = {
+            userObj: authJson,
+            role: userRoles[value]
+        };
+
+
+    AppConstants.AppUser = tempUser;
+    bootstrapApplication();*/
 }
 
 

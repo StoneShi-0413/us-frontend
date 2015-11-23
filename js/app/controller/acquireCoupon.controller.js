@@ -13,25 +13,28 @@ var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, A
             if (rep.result == "OK") {
                 friendQueue.myProfile = rep;
                 $window.sessionStorage.setItem('myProfile', JSON.stringify(friendQueue.myProfile));
-                $state.go('couponResult');
+                
+                var couponsInfo = [];
+                rep.coupons = eval(rep.coupons);
+                if (rep.coupons.length == 1) {
+                    couponsInfo.push(rep.coupons[0]);
+                }
+                voucherService.setCouponInfo(couponsInfo).then(function(repCouponsInfo) {
+                    angular.forEach(repCouponsInfo, function(item, index) {
+                        var coupons = {
+                            'group': '[' + item.data.id + ']',
+                            'name': item.data.percent === 0 ? item.data.discount / 100 + '.00元' : item.data.percent/10 + '折'
+                        };
+                        AppConstants.vouchers.push(coupons);
+                    });
+                    $state.go('couponResult');
+                });
             } else {
                 $state.go('notFound');
             }
         }).error(function(data) {
             alert(data.reason);
         });
-        /*
-        //just test
-        var rep = {
-            "id": 469,
-            "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU",
-            "name": "stone",
-            "iconid": 4066,
-            "coupons": "[5]",
-            "lot_date": 1445515636000
-        };
-        friendQueue.myProfile = rep;
-        $state.go('couponResult');*/
     };
 
     /** when click share button , show wechat indicate tip**/

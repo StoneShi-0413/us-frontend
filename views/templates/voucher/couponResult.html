@@ -16,7 +16,7 @@
             <img class="img-responsive" ng-if="lotteryObj.code" src="./img/vouchered2.jpg" />
         </div>
     </div>
-    <div class="us-container text1">
+    <div class="us-container text1" style="min-height:10px;">
         <img class="img-responsive" ng-if="lotteryObj.code" src="./img/wechat.jpg" />
     </div>
     <div class="us-container text1">
@@ -25,12 +25,12 @@
     <div class="us-container text1">
         <button class="btn btn-sm us-btn" type="button" ng-click="wxDownloadTip($event)"><span class="dynamic-h2">打开US立即购票</span></button>
     </div>
-    <div class="us-container text1">
+    <div class="us-container text1 text-img-margin">
         <img class="img-responsive" src="./img/text.jpg" />
     </div>
     <section class="rules">
         <article>
-            <div class="us-container">
+            <div class="us-container img-friend-luckey-margin">
                 <img class="img-responsive" src="./img/friend_luckey.png" />
             </div>
             <div class="person container" ng-repeat='friend in friendQueues'>
