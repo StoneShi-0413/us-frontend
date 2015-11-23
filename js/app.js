@@ -57,7 +57,7 @@ function fetchData() {
                 userObj: authJson,
                 role: userRoles[value]
             };
-
+        
         if (authJson.hasOwnProperty('redirect')) {
             window.location.href = authJson.redirect;
         } else if (!lot) {
