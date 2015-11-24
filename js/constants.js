@@ -29,8 +29,8 @@ var AppConstants = {
         'notFound': '*'
     },
 
-    vouchers: [
-       /* {'group':'[5]','name':'10.00元'},
+    vouchers: [/*
+        {'group':'[5]','name':'10.00元'},
         {'group':'[6]','name':'20.00元'},
         {'group':'[7]','name':'30.00元'},
         {'group':'[8]','name':'75折'},

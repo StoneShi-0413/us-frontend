@@ -22,11 +22,26 @@
         vertical-align: middle;
         text-align: center;
         width: 100%;
-        position: static
+        position: fixed;
+        bottom: 0;
     }
     
     .download {
-        width: auto;
+        width: 100%;
+    }
+
+    @media screen and (orientation:portrait){
+        
+
+        .download-landscape{
+            display: none;
+        }
+    }
+
+    @media screen and (orientation:landscape){
+        .download-portrait{
+            display: none;
+        }
     }
     </style>
 </head>
@@ -34,7 +49,8 @@
 <body>
     <div class="download-table">
         <div class="download-cell">
-            <img class="download" src="../../img/download.jpg">
+            <img class="download-portrait download" src="../../img/download.jpg">
+            <img class="download-landscape download" src="../../img/download-landscape.jpg">
         </div>
     </div>
     <div class="wxDownloadTip">
@@ -43,6 +59,7 @@
     <script type="text/javascript">
     $(document).ready(function() {
         var ua = window.navigator.userAgent.toLowerCase();
+
         function isWeiXin() {
             if (ua.match(/MicroMessenger/i) == 'micromessenger') {
                 return true;
@@ -66,17 +83,15 @@
         } else if (isWeiXin() && (!isIos())) {
             $('.responsive-image').attr('src', '../../img/wxAndroidDownloadTip.png');
             $('.wxDownloadTip').addClass('on');
-        } else if ((!isWeiXin()) && (!isIos())){
+        } else if ((!isWeiXin()) && (!isIos())) {
             $('.responsive-image').attr('src', '../../img/androidExpect.png');
             $('.wxDownloadTip').addClass('on');
         }
 
 
-
-        $(window).resize(function() {
-            var winheight = $(window).height() * 0.7 + 'px';
-            $('.download').height(winheight);
-        });
+        setTimeout(function() {
+            $(".wxDownloadTip").removeClass('on');
+        }, 3000);
     });
     </script>
 </body>

@@ -68,7 +68,7 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
 
     service.shareFriend = function(redPackObj) {
         var wxImgLink = '',
-            wxLink = $window.location.href.split('#')[0];
+            wxLink = $window.location.href.split('&from=')[0];
         if (redPackObj !== null) {
             wxImgLink = 'http://m.us-app.com/usmvn/image/' + redPackObj.image_id;
             redPackObj = {
@@ -86,7 +86,6 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
                 wxImgLink: wxImgLink
             };
         }
-
         wx.ready(function() {
             wx.onMenuShareAppMessage({
                 title: redPackObj.title, // 分享标题

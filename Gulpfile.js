@@ -76,7 +76,18 @@ gulp.task('lint', function() {
 gulp.task('styles', function() {
     sass('sass/*.scss')
         // Optionally add autoprefixer
-        .pipe(autoprefixer('last 2 versions', '> 1%', 'ie 8'))
+        .pipe(autoprefixer({browsers:['chrome >= 29',
+            'ff >= 29',
+            'safari >= 7',
+            'ie >= 11',
+            'edge >= 1',
+            'opera >= 15',
+            'and_chr >= 44',
+            'and_ff >= 40',
+            'android >= 40',
+            'ios >= 7',
+            'ie_mob >= 11',
+            'op_mob >= 30']}))
         // These last two should look familiar now :)
         .pipe(gulp.dest('dist/css'));
 });

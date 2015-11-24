@@ -9,7 +9,7 @@ var routerRun = function($rootScope, $state, voucherService, $stateParams, AppCo
             event.preventDefault();
         } else {
             var tempUser = AppConstants.AppUser;
-
+            
             if (!voucherService.authorize(toState.data.access, tempUser.role)) {
                 $state.go('notAuth', {
                     redirect: tempUser.userObj.redirect

@@ -7,10 +7,12 @@ var controllerName = 'CouponResultController';
 /**pick up voucher name  by the coupons**/
 var pickUpSamePackageName = function(arr, AppConstants) {
     var vouchers = window.sessionStorage.getItem('vouchers');
+    
     if(!vouchers){
         vouchers = AppConstants.vouchers;
+    }else{
+        vouchers = JSON.parse(vouchers);
     }
-    vouchers = JSON.parse(vouchers);
     var arr1 = eval(arr),
         voucherName = '';
     if (arr1.length > 1) {
@@ -56,8 +58,8 @@ var getArrayItems = function(num, AppConstants) {
 
 
 var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, voucherService, AppConstants) {
-
 /*
+
     //just test
     var rep = {
             "id": 469,
@@ -65,6 +67,7 @@ var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, vouc
             "name": "stone",
             "iconid": 4066,
             "coupons": "[5]",
+            "code": "4719",
             "lot_date": 1445515636000
         },
 
@@ -99,8 +102,8 @@ var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, vouc
         }];
 
     friendQueue.queue = rslt;
-    friendQueue.myProfile = rep;
-*/
+    friendQueue.myProfile = rep;*/
+
 
     //get my profile info from sessionStorage when click download and then click come back button
     var myProfile = $window.sessionStorage.getItem('myProfile');
@@ -126,6 +129,10 @@ var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, vouc
         item.couponsName = pickUpSamePackageName(item.coupons, AppConstants);
         if (item.information) {
             item.information = JSON.parse(item.information);
+            if(item.information.image_url===''){
+                item.information.image_url = $window.location.protocol + '/' + $window.location.host +  $window.location.pathname + 'img/open-icon.png';
+            }
+
         } else {
             item.information = {
                 image_url: AppConstants.protocol + AppConstants.applicationIp + '/usmvn/image/' + item.iconid,
