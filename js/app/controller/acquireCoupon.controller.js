@@ -23,7 +23,7 @@ var AcquireCouponCtrl = function($scope, $stateParams, $state, voucherService, A
                     angular.forEach(repCouponsInfo, function(item, index) {
                         var coupons = {
                             'group': '[' + item.data.id + ']',
-                            'name': item.data.percent === 0 ? item.data.discount / 100 + '.00元' : item.data.percent / 10 + '折'
+                            'name': item.data.percent === 0 ? (item.data.discount = item.data.discount % 100 === 0 ? item.data.discount / 100 + '.00元' : item.data.discount / 100 + '元') : item.data.percent / 10 + '折'
                         };
                         AppConstants.vouchers.push(coupons);
                     });

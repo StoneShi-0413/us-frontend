@@ -13,6 +13,8 @@ require('./app/services/services');
 require('./app/directive/directives');
 require('./app/filter/filters');
 
+
+
 var AppConstants = require('./constants'),
     requires = [
         'ui.router',
@@ -27,6 +29,21 @@ var AppConstants = require('./constants'),
     userRoles = AppConstants.buildRoles(AppConstants.roles),
     lot = AppConstants.queryString().lot,
     app = angular.module('app', requires);
+
+var onBridgeReady = function() {
+    WeixinJSBridge.call('hideOptionMenu');
+};
+
+if (typeof WeixinJSBridge == "undefined") {
+    if (document.addEventListener) {
+        document.addEventListener('WeixinJSBridgeReady', onBridgeReady, false);
+    } else if (document.attachEvent) {
+        document.attachEvent('WeixinJSBridgeReady', onBridgeReady);
+        document.attachEvent('onWeixinJSBridgeReady', onBridgeReady);
+    }
+} else {
+    onBridgeReady();
+}
 
 
 /**start app **/
@@ -57,7 +74,7 @@ function fetchData() {
                 userObj: authJson,
                 role: userRoles[value]
             };
-        
+
         if (authJson.hasOwnProperty('redirect')) {
             window.location.href = authJson.redirect;
         } else if (!lot) {
@@ -68,24 +85,24 @@ function fetchData() {
         }
 
     });
-/*
-    var authJson = {
-            "id": 469,
-            "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU",
-            "name": "stone",
-            "iconid": 4066,
-            "coupons": "[5]",
-            "lot_date": 1445515636000
-        },
-        value = authJson.hasOwnProperty('us_id') ? 'us_id' : (authJson.hasOwnProperty('uid') ? 'uid' : (authJson.hasOwnProperty('redirect') ? 'redirect' : 'redirect')),
-        tempUser = {
-            userObj: authJson,
-            role: userRoles[value]
-        };
+    /*
+        var authJson = {
+                "id": 469,
+                "us_id": "o-AMtt_hv8xAxjowLwMxaVO4U3IU",
+                "name": "stone",
+                "iconid": 4066,
+                "coupons": "[5]",
+                "lot_date": 1445515636000
+            },
+            value = authJson.hasOwnProperty('us_id') ? 'us_id' : (authJson.hasOwnProperty('uid') ? 'uid' : (authJson.hasOwnProperty('redirect') ? 'redirect' : 'redirect')),
+            tempUser = {
+                userObj: authJson,
+                role: userRoles[value]
+            };
 
 
-    AppConstants.AppUser = tempUser;
-    bootstrapApplication();*/
+        AppConstants.AppUser = tempUser;
+        bootstrapApplication();*/
 }
 
 

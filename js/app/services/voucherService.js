@@ -103,6 +103,8 @@ var voucherService = function($http, $window, $location, $q, AppConstants) {
                 success: function() {},
                 cancel: function() {}
             });
+
+            WeixinJSBridge.call('showOptionMenu');
         });
     };
 
