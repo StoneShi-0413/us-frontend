@@ -63,6 +63,8 @@ var AppConstants = {
                 queryString[pair[0]].push(decodeURIComponent(pair[1]));
             }
         }
+
+        //queryString = {lot : 1448514653009};
         return queryString;
     },
 

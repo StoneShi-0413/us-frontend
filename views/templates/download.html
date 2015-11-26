@@ -75,12 +75,9 @@
                 return false;
             }
         }
-        if (isIos() && isWeiXin()) {
-            $('.responsive-image').attr('src', '../../img/wxIosDownloadTip.png');
-            $('.wxDownloadTip').addClass('on');
-        } else if (isIos() && (!isWeiXin())) {
+        if (isIos() && (!isWeiXin())) {
             window.location.href = "http://itunes.apple.com/us/app/id983129727";
-        } else if (isWeiXin() && (!isIos())) {
+        } else if (isWeiXin()) {
             $('.responsive-image').attr('src', '../../img/wxAndroidDownloadTip.png');
             $('.wxDownloadTip').addClass('on');
         } else if ((!isWeiXin()) && (!isIos())) {

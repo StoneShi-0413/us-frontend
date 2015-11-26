@@ -58,7 +58,7 @@ var getArrayItems = function(num, AppConstants) {
 
 
 var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, voucherService, AppConstants) {
-/*
+
 
     //just test
     var rep = {
@@ -102,7 +102,7 @@ var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, vouc
         }];
 
     friendQueue.queue = rslt;
-    friendQueue.myProfile = rep;*/
+    friendQueue.myProfile = rep;
 
 
     //get my profile info from sessionStorage when click download and then click come back button
@@ -167,7 +167,6 @@ var couponResultCtrl = function($scope, $window, $stateParams, friendQueue, vouc
     /** when click share button , show wechat indicate tip**/
     $scope.wxShareTip = function(event) {
         event.preventDefault();
-        console.log(event);
         $scope.orientation = AppConstants.orientation;
         $('.wxShareTip').addClass('on');
         setTimeout(function() {
